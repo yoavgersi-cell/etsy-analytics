@@ -3,7 +3,7 @@ import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import { SignOutButton } from "@/components/sign-out-button"
-import { RanksyLogo } from "@/components/ranksy-logo"
+import { ListiflyLogo } from "@/components/ranksy-logo"
 import { NavLinks } from "@/components/nav-links"
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -19,8 +19,8 @@ export default async function DashboardLayout({ children }: { children: React.Re
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-5">
             <Link href="/dashboard" className="flex items-center gap-2 shrink-0">
-              <RanksyLogo size={26} />
-              <span className="font-bold text-gray-900 text-base tracking-tight">Ranksy</span>
+              <ListiflyLogo size={26} />
+              <span className="font-bold text-gray-900 text-base tracking-tight">Listifly</span>
             </Link>
             <div className="w-px h-5 bg-gray-200" />
             <NavLinks />
@@ -50,11 +50,11 @@ export default async function DashboardLayout({ children }: { children: React.Re
       <footer className="border-t border-warm-border mt-16 bg-white">
         <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <RanksyLogo size={16} />
-            <p className="text-xs text-gray-400">© 2026 Ranksy · Not affiliated with Etsy, Inc.</p>
+            <ListiflyLogo size={16} />
+            <p className="text-xs text-gray-400">© 2026 Listifly · Not affiliated with Etsy, Inc.</p>
           </div>
-          <a href="mailto:hello@ranksy.app" className="text-xs text-gray-400 hover:text-gray-600 transition-colors">
-            hello@ranksy.app
+          <a href="mailto:hello@listifly.app" className="text-xs text-gray-400 hover:text-gray-600 transition-colors">
+            hello@listifly.app
           </a>
         </div>
       </footer>

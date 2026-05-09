@@ -195,7 +195,7 @@ export function ListingEditor({
         onClick={generate}
       >
         <Sparkles className="w-3.5 h-3.5" />
-        Apply Ranksy recommendations
+        Apply Listifly recommendations
       </Button>
     )
   }
@@ -206,7 +206,7 @@ export function ListingEditor({
       <div className="bg-white rounded-2xl border border-warm-border p-6 text-center space-y-3">
         <Loader2 className="w-6 h-6 animate-spin text-brand mx-auto" />
         <p className="text-sm font-medium text-gray-700">Generating improvements…</p>
-        <p className="text-xs text-gray-400">Ranksy is rewriting your listing based on the analysis.</p>
+        <p className="text-xs text-gray-400">Listifly is rewriting your listing based on the analysis.</p>
       </div>
     )
   }
@@ -219,7 +219,7 @@ export function ListingEditor({
           <div>
             <h2 className="text-sm font-bold text-gray-900">Review changes</h2>
             <p className="text-xs text-gray-400 mt-0.5">
-              Ranksy improved your listing based on the analysis. Review and push to Etsy.
+              Listifly improved your listing based on the analysis. Review and push to Etsy.
             </p>
           </div>
           <button onClick={() => { setStep("idle"); setImproved(null) }} className="text-gray-300 hover:text-gray-500 transition-colors shrink-0">
@@ -270,7 +270,7 @@ export function ListingEditor({
           </button>
           <div>
             <h2 className="text-sm font-bold text-gray-900">Fine-tune</h2>
-            <p className="text-xs text-gray-400 mt-0.5">Adjust Ranksy&apos;s suggestions before pushing.</p>
+            <p className="text-xs text-gray-400 mt-0.5">Adjust Listifly&apos;s suggestions before pushing.</p>
           </div>
           <button onClick={() => setStep("review")} className="ml-auto text-gray-300 hover:text-gray-500 transition-colors">
             <X className="w-4 h-4" />

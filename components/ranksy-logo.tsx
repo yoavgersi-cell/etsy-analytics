@@ -1,4 +1,4 @@
-export function RanksyLogo({ size = 32 }: { size?: number }) {
+export function ListiflyLogo({ size = 32 }: { size?: number }) {
   return (
     <svg
       width={size}

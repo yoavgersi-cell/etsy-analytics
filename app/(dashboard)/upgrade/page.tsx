@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js"
-import { RanksyLogo } from "@/components/ranksy-logo"
+import { ListiflyLogo } from "@/components/ranksy-logo"
 import { CheckCircle2, X, Zap, ShieldCheck, ArrowRight } from "lucide-react"
 
 const COMPARE = [
@@ -18,7 +18,7 @@ const COMPARE = [
 const TESTIMONIAL = {
   name: "Sarah K.",
   shop: "BloomCeramics",
-  text: "Went from 12 views/day to 80+ after fixing the gaps Ranksy flagged. Worth every penny.",
+  text: "Went from 12 views/day to 80+ after fixing the gaps Listifly flagged. Worth every penny.",
   avatar: "SK",
 }
 
@@ -112,8 +112,8 @@ export default function UpgradePage() {
               Most popular
             </div>
             <div className="flex items-center gap-2 mb-4">
-              <RanksyLogo size={20} />
-              <span className="font-bold text-white text-sm">Ranksy Pro</span>
+              <ListiflyLogo size={20} />
+              <span className="font-bold text-white text-sm">Listifly Pro</span>
             </div>
             <div className="flex items-end gap-1.5 mb-1">
               <span className="text-5xl font-extrabold text-white leading-none">$19</span>

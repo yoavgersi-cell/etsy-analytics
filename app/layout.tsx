@@ -9,8 +9,8 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Etsy Analytics",
-  description: "AI-powered analytics for Etsy sellers",
+  title: "Listifly",
+  description: "AI-powered listing optimization for Etsy sellers",
 };
 
 export default function RootLayout({

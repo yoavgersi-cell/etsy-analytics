@@ -1,7 +1,7 @@
 "use client"
 
 import { signIn } from "next-auth/react"
-import { RanksyLogo } from "@/components/ranksy-logo"
+import { ListiflyLogo } from "@/components/ranksy-logo"
 import { Button } from "@/components/ui/button"
 import { BarChart3, ScanSearch, PenLine, ShieldCheck, Zap, TrendingUp, CreditCard } from "lucide-react"
 
@@ -35,7 +35,7 @@ const testimonials = [
     shop: "BloomCeramics",
     sales: "3,200+ sales",
     avatar: "SK",
-    text: "I went from 12 views a day to over 80 after fixing the gaps Ranksy flagged. My top listing jumped to page one in two weeks. Wish I had this when I started.",
+    text: "I went from 12 views a day to over 80 after fixing the gaps Listifly flagged. My top listing jumped to page one in two weeks. Wish I had this when I started.",
   },
   {
     name: "Marcus T.",
@@ -73,8 +73,8 @@ export default function LoginPage() {
       {/* Nav */}
       <nav className="border-b border-warm-border px-6 py-4 flex items-center max-w-6xl mx-auto">
         <div className="flex items-center gap-2.5">
-          <RanksyLogo size={34} />
-          <span className="font-bold text-gray-900 text-lg tracking-tight">Ranksy</span>
+          <ListiflyLogo size={34} />
+          <span className="font-bold text-gray-900 text-lg tracking-tight">Listifly</span>
         </div>
       </nav>
 
@@ -91,7 +91,7 @@ export default function LoginPage() {
             <span className="text-brand">We find every one.</span>
           </h1>
           <p className="text-xl text-gray-500 max-w-xl mx-auto mb-10 leading-relaxed">
-            Ranksy scores your shop against Etsy's search ranking signals,
+            Listifly scores your shop against Etsy's search ranking signals,
             shows you exactly what's costing you visibility, and writes better content to fix it.
           </p>
           <div className="flex flex-col items-center gap-3">
@@ -123,7 +123,7 @@ export default function LoginPage() {
       <section className="max-w-5xl mx-auto px-6 py-20">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900">Know exactly why your listings aren't ranking</h2>
-          <p className="text-gray-500 mt-3">Most sellers are guessing. Ranksy shows you the data.</p>
+          <p className="text-gray-500 mt-3">Most sellers are guessing. Listifly shows you the data.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {features.map((f) => (
@@ -212,11 +212,11 @@ export default function LoginPage() {
             {/* Brand */}
             <div className="flex flex-col gap-2 max-w-xs">
               <div className="flex items-center gap-2">
-                <RanksyLogo size={24} />
-                <span className="font-bold text-gray-900 text-sm tracking-tight">Ranksy</span>
+                <ListiflyLogo size={24} />
+                <span className="font-bold text-gray-900 text-sm tracking-tight">Listifly</span>
               </div>
               <p className="text-xs text-gray-400 leading-relaxed">
-                Built for Etsy sellers who want to stop guessing and start growing. Ranksy turns your shop's search data into a clear action plan.
+                Built for Etsy sellers who want to stop guessing and start growing. Listifly turns your shop's search data into a clear action plan.
               </p>
             </div>
 
@@ -240,8 +240,8 @@ export default function LoginPage() {
             {/* Contact */}
             <div className="flex flex-col gap-1.5">
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Contact</p>
-              <a href="mailto:hello@ranksy.app" className="text-xs text-gray-400 hover:text-gray-700 transition-colors">
-                hello@ranksy.app
+              <a href="mailto:hello@listifly.app" className="text-xs text-gray-400 hover:text-gray-700 transition-colors">
+                hello@listifly.app
               </a>
               <p className="text-xs text-gray-400 mt-1 leading-relaxed">
                 Questions about pricing or the free trial? We reply within one business day.
@@ -250,7 +250,7 @@ export default function LoginPage() {
           </div>
 
           <div className="border-t border-warm-border mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-            <p className="text-xs text-gray-400">© 2026 Ranksy. Not affiliated with or endorsed by Etsy, Inc.</p>
+            <p className="text-xs text-gray-400">© 2026 Listifly. Not affiliated with or endorsed by Etsy, Inc.</p>
             <p className="text-xs text-gray-400">Made for independent makers and small shop owners.</p>
           </div>
         </div>

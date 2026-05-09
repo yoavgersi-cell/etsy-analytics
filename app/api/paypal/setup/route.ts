@@ -34,7 +34,7 @@ export async function GET() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: "Ranksy Pro",
+        name: "Listifly Pro",
         description: "Unlimited listing analysis and content generation for Etsy sellers.",
         type: "SERVICE",
         category: "SOFTWARE",
@@ -52,7 +52,7 @@ export async function GET() {
       },
       body: JSON.stringify({
         product_id: product.id,
-        name: "Ranksy Pro — Monthly",
+        name: "Listifly Pro — Monthly",
         description: "Unlimited listing analyses, content writer, ranking gap analysis.",
         status: "ACTIVE",
         billing_cycles: [
