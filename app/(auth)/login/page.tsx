@@ -3,315 +3,281 @@
 import { signIn } from "next-auth/react"
 import { ListiflyLogo } from "@/components/ranksy-logo"
 import { Button } from "@/components/ui/button"
-import {
-  ShieldCheck,
-  Zap,
-  TrendingUp,
-  Search,
-  Tag,
-  BarChart3,
-  CheckCircle2,
-  ArrowRight,
-  Star,
-  AlertCircle,
-  Sparkles,
-} from "lucide-react"
+import { ShieldCheck, Eye, CheckCircle2, Star, AlertCircle, Search, Tag, BarChart3 } from "lucide-react"
 
-function ConnectButton({ label = "See What's Hurting Your Sales →" }: { label?: string }) {
+function ConnectButton({ label = "Check my listings →" }: { label?: string }) {
   return (
     <Button
       size="lg"
       onClick={() => signIn("etsy", { callbackUrl: "/dashboard" })}
-      className="bg-brand hover:bg-brand-hover text-white text-base px-10 py-6 rounded-full shadow-lg shadow-[oklch(0.58_0.19_42/0.3)] font-semibold"
+      className="bg-brand hover:bg-brand-hover text-white text-base px-9 py-6 rounded-full font-semibold shadow-sm"
     >
       {label}
     </Button>
   )
 }
 
-// ── Before / After mock ────────────────────────────────────
 function BeforeAfterMock() {
   return (
-    <div className="relative max-w-2xl mx-auto mt-14">
-      {/* Glow */}
-      <div className="absolute inset-0 bg-brand/10 blur-3xl rounded-3xl" />
+    <div className="max-w-xl mx-auto mt-12">
+      <div className="bg-white border border-gray-100 rounded-3xl shadow-sm overflow-hidden">
+        {/* Header */}
+        <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+          <span className="text-sm text-gray-500">Floral Baby Shower Invitation Template</span>
+          <span className="text-xs text-gray-400 bg-gray-50 px-3 py-1 rounded-full border border-gray-100">Etsy listing</span>
+        </div>
 
-      <div className="relative grid grid-cols-2 gap-3 bg-white border border-warm-border rounded-3xl shadow-xl overflow-hidden p-5">
+        <div className="grid grid-cols-2 divide-x divide-gray-100">
+          {/* Before */}
+          <div className="p-5 space-y-3">
+            <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">Before</p>
+            <div className="text-center py-4">
+              <span className="text-5xl font-bold text-gray-300">42</span>
+              <p className="text-xs text-gray-400 mt-1">out of 100</p>
+            </div>
+            <div className="space-y-2">
+              {[
+                "Title too short",
+                "6 keywords missing",
+                "Only 7 of 13 tags used",
+              ].map((issue) => (
+                <div key={issue} className="flex items-center gap-2 text-xs text-gray-400">
+                  <AlertCircle className="w-3.5 h-3.5 text-gray-300 shrink-0" />
+                  {issue}
+                </div>
+              ))}
+            </div>
+          </div>
 
-        {/* BEFORE */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Before</span>
-          </div>
-          {/* Score */}
-          <div className="bg-red-50 border border-red-100 rounded-2xl p-4 text-center">
-            <div className="text-4xl font-extrabold text-red-400">42</div>
-            <div className="text-xs text-red-400 mt-0.5">Listing score</div>
-          </div>
-          {/* Issues */}
-          <div className="space-y-1.5">
-            {[
-              "Title too short",
-              "Missing 6 keywords",
-              "Only 7/13 tags used",
-            ].map((issue) => (
-              <div key={issue} className="flex items-center gap-2 bg-red-50 rounded-xl px-3 py-2">
-                <AlertCircle className="w-3.5 h-3.5 text-red-400 shrink-0" />
-                <span className="text-xs text-red-500">{issue}</span>
-              </div>
-            ))}
+          {/* After */}
+          <div className="p-5 space-y-3 bg-[#fafaf9]">
+            <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">After Listifly</p>
+            <div className="text-center py-4">
+              <span className="text-5xl font-bold text-brand">89</span>
+              <p className="text-xs text-gray-400 mt-1">out of 100</p>
+            </div>
+            <div className="space-y-2">
+              {[
+                "Title rewritten for search",
+                "High-traffic keywords added",
+                "All 13 tags filled in",
+              ].map((fix) => (
+                <div key={fix} className="flex items-center gap-2 text-xs text-gray-600">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-brand shrink-0" />
+                  {fix}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Arrow */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-brand rounded-full w-8 h-8 flex items-center justify-center shadow-md">
-          <ArrowRight className="w-4 h-4 text-white" />
-        </div>
-
-        {/* AFTER */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">After Listifly</span>
-          </div>
-          {/* Score */}
-          <div className="bg-green-50 border border-green-200 rounded-2xl p-4 text-center">
-            <div className="text-4xl font-extrabold text-green-500">89</div>
-            <div className="text-xs text-green-500 mt-0.5">Listing score</div>
-          </div>
-          {/* Fixed */}
-          <div className="space-y-1.5">
-            {[
-              "Title optimized for search",
-              "High-traffic keywords added",
-              "All 13 tags filled",
-            ].map((fix) => (
-              <div key={fix} className="flex items-center gap-2 bg-green-50 rounded-xl px-3 py-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-green-500 shrink-0" />
-                <span className="text-xs text-green-700 font-medium">{fix}</span>
-              </div>
-            ))}
-          </div>
+        <div className="px-6 py-3 border-t border-gray-100 bg-[#fafaf9]">
+          <p className="text-xs text-gray-400 text-center">Fixed in about 40 seconds</p>
         </div>
       </div>
-
-      <p className="text-center text-xs text-gray-400 mt-3">Real result from a Listifly user — fixed in under 60 seconds</p>
     </div>
   )
 }
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white text-gray-900">
 
       {/* ── Nav ── */}
-      <nav className="border-b border-warm-border px-6 py-4 flex items-center justify-between max-w-6xl mx-auto">
+      <nav className="px-6 py-5 flex items-center justify-between max-w-5xl mx-auto">
         <div className="flex items-center gap-2.5">
-          <ListiflyLogo size={30} />
-          <span className="font-bold text-gray-900 text-lg tracking-tight">Listifly</span>
+          <ListiflyLogo size={28} />
+          <span className="font-bold text-gray-900 tracking-tight">Listifly</span>
         </div>
         <button
           onClick={() => signIn("etsy", { callbackUrl: "/dashboard" })}
-          className="text-sm font-semibold text-brand hover:underline"
+          className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
         >
           Sign in
         </button>
       </nav>
 
       {/* ── HERO ── */}
-      <section className="bg-gradient-to-b from-white to-surface">
-        <div className="max-w-3xl mx-auto px-6 pt-20 pb-10 text-center">
-
-          {/* Trust badge */}
-          <div className="inline-flex items-center gap-2 bg-brand-light text-brand-muted text-sm font-medium px-4 py-1.5 rounded-full mb-8">
-            <span className="w-2 h-2 rounded-full bg-brand animate-pulse inline-block" />
-            Trusted by 4,000+ Etsy sellers worldwide
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl font-extrabold text-gray-900 leading-[1.08] tracking-tight mb-5">
-            Your listings are
-            <br />
-            <span className="text-brand">invisible to buyers.</span>
-            <br />
-            We fix that.
-          </h1>
-
-          <p className="text-xl text-gray-500 max-w-lg mx-auto mb-10 leading-relaxed">
-            Listifly scans your Etsy shop, finds exactly what's killing your rankings,
-            and rewrites your listings — automatically.
-          </p>
-
-          <ConnectButton />
-
-          <p className="text-sm text-gray-400 mt-3">
-            Free for your first 3 listings · No credit card · Read-only access
-          </p>
+      <section className="max-w-3xl mx-auto px-6 pt-16 pb-8 text-center">
+        <div className="inline-flex items-center gap-2 text-sm text-gray-500 bg-gray-50 border border-gray-100 px-4 py-1.5 rounded-full mb-8">
+          <span className="w-1.5 h-1.5 rounded-full bg-brand inline-block" />
+          Used by 4,000+ Etsy sellers
         </div>
 
-        <BeforeAfterMock />
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-[1.12] tracking-tight mb-5">
+          Some of your listings probably
+          <br />
+          aren&apos;t showing in search.
+          <br />
+          <span className="text-brand">We&apos;ll show you why.</span>
+        </h1>
 
-        <div className="pb-20" />
+        <p className="text-lg text-gray-500 max-w-lg mx-auto mb-9 leading-relaxed">
+          Listifly scans your Etsy shop, finds what&apos;s affecting your rankings,
+          and rewrites your listings so buyers can actually find you.
+        </p>
+
+        <ConnectButton />
+
+        <p className="text-sm text-gray-400 mt-3">
+          First 3 listings are free · No credit card · We never edit anything without your approval
+        </p>
       </section>
+
+      <BeforeAfterMock />
 
       {/* ── PROBLEM ── */}
-      <section className="bg-ink py-20">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-brand text-sm font-semibold uppercase tracking-widest mb-4">The hard truth</p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">
-            Most Etsy sellers are invisible<br className="hidden sm:block" /> — and don&apos;t know it.
+      <section className="max-w-4xl mx-auto px-6 py-24">
+        <div className="max-w-xl mb-12">
+          <p className="text-sm text-brand font-semibold uppercase tracking-widest mb-3">What usually goes wrong</p>
+          <h2 className="text-3xl font-bold text-gray-900 leading-tight mb-4">
+            Most listing problems are small
+            things that add up over time.
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto mb-12 text-base leading-relaxed">
-            If buyers can&apos;t find your listings, it doesn&apos;t matter how beautiful your products are.
-            The problem isn&apos;t your product — it&apos;s your SEO.
+          <p className="text-gray-500 leading-relaxed">
+            Etsy&apos;s search algorithm looks at a handful of specific signals. When a listing misses even a few,
+            it can quietly slip out of search results — and most sellers don&apos;t notice until sales slow down.
           </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
-            {[
-              { icon: Search, text: "Your titles are missing the keywords buyers actually search for" },
-              { icon: Tag, text: "You're using only 7 of your 13 tags — giving up free search real estate" },
-              { icon: BarChart3, text: "Your listings aren't showing on page 1 — or even page 5" },
-              { icon: AlertCircle, text: "You're targeting the wrong audience without realizing it" },
-            ].map(({ icon: Icon, text }) => (
-              <div key={text} className="flex items-start gap-3 bg-white/5 border border-white/10 rounded-2xl px-5 py-4">
-                <div className="w-8 h-8 rounded-xl bg-brand/20 flex items-center justify-center shrink-0 mt-0.5">
-                  <Icon className="w-4 h-4 text-brand" />
-                </div>
-                <p className="text-gray-300 text-sm leading-relaxed">{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SOLUTION ── */}
-      <section className="py-20 max-w-5xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <p className="text-brand text-sm font-semibold uppercase tracking-widest mb-3">How it works</p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight">
-            Find it. Fix it. Done.
-          </h2>
-          <p className="text-gray-500 mt-3 max-w-md mx-auto">No guessing. No SEO degree needed. Just connect your shop and let Listifly do the work.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
             {
               icon: Search,
-              title: "Find what's killing your rankings",
-              desc: "Listifly scans every listing and scores it across the signals Etsy uses to rank search results — title, tags, keywords, and more.",
-              badge: "Step 1",
+              title: "Titles that don&apos;t match how buyers search",
+              desc: "Buyers type things like \"personalized baby shower gift\" — not the product name you&apos;ve used. Small wording differences affect whether your listing appears.",
+            },
+            {
+              icon: Tag,
+              title: "Tags that aren&apos;t pulling in traffic",
+              desc: "Etsy gives you 13 tags. Most sellers use 7 or 8, and many of them are too generic to rank for anything specific.",
             },
             {
               icon: BarChart3,
-              title: "See exactly what to fix — and why",
-              desc: "Every issue is explained in plain English, ranked by impact. No jargon. Just: 'Fix this → get more views.'",
-              badge: "Step 2",
+              title: "Descriptions written for buyers, not search",
+              desc: "A well-written description helps buyers. An optimized one helps both. Most listings are missing the keywords that tell Etsy what the item is.",
             },
             {
-              icon: Sparkles,
-              title: "Fix everything in one click",
-              desc: "Listifly rewrites your titles, description, and all 13 tags using high-traffic Etsy keywords — and pushes the update live. Done.",
-              badge: "Step 3",
+              icon: AlertCircle,
+              title: "Competing with the wrong listings",
+              desc: "If your listing is miscategorized or missing the right attributes, Etsy may be showing it to the wrong audience — or not at all.",
             },
-          ].map((card) => (
-            <div key={card.title} className="bg-white border border-warm-border rounded-2xl p-7 hover:shadow-lg hover:border-brand/30 transition-all group">
-              <div className="inline-block text-[10px] font-bold uppercase tracking-widest text-brand bg-brand-light px-2.5 py-1 rounded-full mb-5">
-                {card.badge}
+          ].map(({ icon: Icon, title, desc }) => (
+            <div key={title} className="flex items-start gap-4 bg-gray-50 border border-gray-100 rounded-2xl px-6 py-5">
+              <div className="w-8 h-8 rounded-xl bg-white border border-gray-100 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                <Icon className="w-4 h-4 text-gray-400" />
               </div>
-              <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors">
-                <card.icon className="w-5 h-5 text-brand" />
+              <div>
+                <p className="font-semibold text-gray-800 text-sm mb-1" dangerouslySetInnerHTML={{ __html: title }} />
+                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
               </div>
-              <h3 className="font-bold text-gray-900 text-lg mb-2 leading-snug">{card.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{card.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── HOW IT WORKS (visual steps) ── */}
-      <section className="bg-surface py-20">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 mb-3">From zero to optimized in 60 seconds</h2>
-          <p className="text-gray-500 mb-12">No setup. No learning curve. Just results.</p>
-
-          <div className="relative">
-            {/* Connector line */}
-            <div className="hidden md:block absolute top-6 left-[16%] right-[16%] h-px bg-gray-200 z-0" />
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative z-10">
-              {[
-                { n: "1", title: "Connect your shop", desc: "One click. Read-only. We never touch your listings without your approval." },
-                { n: "2", title: "See your ranking gaps", desc: "Every listing gets scored. Every problem gets explained." },
-                { n: "3", title: "One click to fix it all", desc: "Approve the changes and Listifly updates your listing on Etsy instantly." },
-              ].map((s) => (
-                <div key={s.n} className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-brand text-white text-xl font-extrabold flex items-center justify-center mb-4 shadow-md shadow-[oklch(0.58_0.19_42/0.25)]">
-                    {s.n}
-                  </div>
-                  <h3 className="font-bold text-gray-900 mb-1.5">{s.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
-                </div>
-              ))}
-            </div>
+      {/* ── HOW IT WORKS ── */}
+      <section className="bg-[#fafaf9] border-y border-gray-100 py-24">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="max-w-lg mb-14">
+            <p className="text-sm text-brand font-semibold uppercase tracking-widest mb-3">How it works</p>
+            <h2 className="text-3xl font-bold text-gray-900 leading-tight mb-3">
+              Connect your shop. See what&apos;s happening. Fix it.
+            </h2>
+            <p className="text-gray-500 leading-relaxed">
+              The whole process takes a few minutes. You stay in control at every step.
+            </p>
           </div>
 
-          <div className="mt-14">
+          <div className="space-y-6">
+            {[
+              {
+                n: "1",
+                title: "Connect your Etsy shop",
+                desc: "Sign in with your Etsy account. We get read-only access — we can see your listings, but we can't change anything until you say so. Takes about 30 seconds.",
+              },
+              {
+                n: "2",
+                title: "See what's affecting your rankings",
+                desc: "Each listing gets a score and a breakdown — what's working, what isn't, and what would help the most. No jargon, just clear explanations.",
+              },
+              {
+                n: "3",
+                title: "Review and apply the improvements",
+                desc: "Listifly rewrites your title, description, and tags. You review the changes before anything goes live. When you're happy, one click pushes it to Etsy.",
+              },
+            ].map((s) => (
+              <div key={s.n} className="flex items-start gap-6 bg-white border border-gray-100 rounded-2xl px-7 py-6">
+                <div className="w-9 h-9 rounded-full bg-brand text-white text-sm font-bold flex items-center justify-center shrink-0 mt-0.5">
+                  {s.n}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-1.5">{s.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
             <ConnectButton />
             <p className="text-xs text-gray-400 mt-3">Free to start · No card needed</p>
           </div>
         </div>
       </section>
 
-      {/* ── WHY LISTIFLY ── */}
-      <section className="py-20 max-w-5xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* ── DIFFERENTIATION ── */}
+      <section className="max-w-4xl mx-auto px-6 py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
-            <p className="text-brand text-sm font-semibold uppercase tracking-widest mb-3">Why Listifly</p>
-            <h2 className="text-3xl font-extrabold text-gray-900 leading-tight mb-5">
-              Not just another AI tool.<br />Built specifically for Etsy.
+            <p className="text-sm text-brand font-semibold uppercase tracking-widest mb-3">Why Listifly</p>
+            <h2 className="text-3xl font-bold text-gray-900 leading-tight mb-5">
+              Built for Etsy, not for e-commerce in general.
             </h2>
-            <p className="text-gray-500 leading-relaxed mb-8">
-              Generic AI tools don&apos;t know how Etsy search works. Generic SEO tools give you data without fixes.
-              Listifly was built from the ground up to understand Etsy&apos;s ranking signals — and act on them automatically.
+            <p className="text-gray-500 leading-relaxed mb-6">
+              A lot of tools will give you generic SEO advice that doesn&apos;t apply to how Etsy actually works.
+              Etsy has its own search algorithm, its own tag system, its own buyer behavior patterns.
+              Listifly was built specifically around those patterns.
             </p>
-            <div className="space-y-4">
+            <p className="text-gray-500 leading-relaxed mb-8">
+              It also does more than tell you what to fix. It writes the improved version for you, shows you
+              exactly what changed and why, and lets you push it live in one click — without ever leaving Listifly.
+            </p>
+            <div className="space-y-3">
               {[
-                { title: "Etsy-native intelligence", desc: "Trained on ranking patterns from millions of top-performing Etsy listings — not generic e-commerce." },
-                { title: "Automation, not suggestions", desc: "We don't just tell you what's wrong. We fix it, then let you approve before anything goes live." },
-                { title: "No SEO knowledge needed", desc: "Plain English recommendations. One-click fixes. Built for makers, not marketers." },
+                "Scoring built on Etsy-specific ranking signals",
+                "Rewrites your listings — doesn't just flag issues",
+                "You review everything before it goes live",
+                "No SEO knowledge required",
               ].map((item) => (
-                <div key={item.title} className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-brand flex items-center justify-center shrink-0 mt-0.5">
-                    <CheckCircle2 className="w-3 h-3 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 text-sm">{item.title}</p>
-                    <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
-                  </div>
+                <div key={item} className="flex items-center gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
+                  <span className="text-sm text-gray-700">{item}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Comparison table */}
-          <div className="bg-white border border-warm-border rounded-2xl overflow-hidden shadow-sm">
-            <div className="grid grid-cols-3 text-xs font-bold uppercase tracking-wide text-gray-400 px-6 py-3 border-b border-warm-border bg-surface">
-              <span>Feature</span>
-              <span className="text-center">Generic AI</span>
+          {/* Simple comparison */}
+          <div className="bg-gray-50 border border-gray-100 rounded-2xl overflow-hidden">
+            <div className="grid grid-cols-3 text-xs font-semibold text-gray-400 uppercase tracking-wide px-5 py-3 border-b border-gray-100">
+              <span className="col-span-1"></span>
+              <span className="text-center">Other tools</span>
               <span className="text-center text-brand">Listifly</span>
             </div>
             {[
-              { label: "Etsy-specific analysis", generic: false, us: true },
-              { label: "1-click listing fix", generic: false, us: true },
-              { label: "Push to Etsy directly", generic: false, us: true },
-              { label: "Explains why in plain English", generic: false, us: true },
-              { label: "Works without SEO knowledge", generic: false, us: true },
-            ].map(({ label, generic, us }) => (
-              <div key={label} className="grid grid-cols-3 items-center px-6 py-3 border-b border-gray-50 last:border-0">
-                <span className="text-sm text-gray-700">{label}</span>
+              { label: "Etsy-specific scoring", other: false, us: true },
+              { label: "Rewrites listings for you", other: false, us: true },
+              { label: "Pushes to Etsy directly", other: false, us: true },
+              { label: "Plain-English explanations", other: false, us: true },
+              { label: "Works without SEO knowledge", other: false, us: true },
+            ].map(({ label, other, us }) => (
+              <div key={label} className="grid grid-cols-3 items-center px-5 py-3 border-b border-gray-100 last:border-0 bg-white">
+                <span className="text-sm text-gray-600 col-span-1">{label}</span>
                 <span className="flex justify-center">
-                  {generic
+                  {other
                     ? <CheckCircle2 className="w-4 h-4 text-green-400" />
-                    : <span className="text-gray-200 font-bold text-lg">—</span>}
+                    : <span className="text-gray-200 text-lg font-light">—</span>}
                 </span>
                 <span className="flex justify-center">
                   {us && <CheckCircle2 className="w-4 h-4 text-brand" />}
@@ -322,79 +288,73 @@ export default function LoginPage() {
         </div>
       </section>
 
-      {/* ── RESULTS ── */}
-      <section className="bg-ink py-16">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {/* ── STATS ── */}
+      <section className="bg-[#fafaf9] border-y border-gray-100 py-16">
+        <div className="max-w-4xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
           {[
-            { value: "4,000+", label: "Etsy sellers optimized", sub: "and growing daily" },
-            { value: "2–3 weeks", label: "Avg. time to see more views", sub: "after first optimization" },
-            { value: "68%", label: "Average increase in views", sub: "within the first month" },
-            { value: "2.4M+", label: "Listings scored", sub: "across all categories" },
+            { value: "4,000+", label: "Etsy sellers using Listifly" },
+            { value: "2–3 weeks", label: "Typical time to see more views" },
+            { value: "68%", label: "Average increase in listing views" },
+            { value: "2.4M+", label: "Listings scored so far" },
           ].map((s) => (
             <div key={s.label}>
-              <div className="text-3xl font-extrabold text-white">{s.value}</div>
-              <div className="text-sm text-gray-300 mt-1 font-medium">{s.label}</div>
-              <div className="text-xs text-gray-500 mt-0.5">{s.sub}</div>
+              <div className="text-3xl font-bold text-gray-900">{s.value}</div>
+              <div className="text-sm text-gray-400 mt-1.5 leading-snug">{s.label}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section className="py-20 max-w-5xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-extrabold text-gray-900">Real sellers. Real results.</h2>
-          <p className="text-gray-500 mt-2">No paid reviews. No made-up numbers.</p>
+      <section className="max-w-5xl mx-auto px-6 py-24">
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-900">What sellers are saying</h2>
+          <p className="text-gray-500 mt-2">A few examples from people who&apos;ve used it.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
             {
               name: "Sarah K.",
               shop: "BloomCeramics",
               avatar: "SK",
-              stars: 5,
-              text: "I went from 12 views a day to 80+ within 3 weeks of using Listifly. My top listing jumped to page one. I had no idea my titles were so bad.",
-              highlight: "12 → 80+ daily views in 3 weeks",
+              text: "My views went from 12 a day to around 80 within a few weeks of updating my listings. I didn't change the products at all — just the titles and tags.",
+              detail: "12 → 80 daily views · within 3 weeks",
             },
             {
               name: "Marcus T.",
               shop: "WoodCraftByMarcus",
               avatar: "MT",
-              stars: 5,
-              text: "I had no idea I was targeting the wrong keywords for 3 years. Sales went up 40% in the first month after fixing 8 listings. Wish I found this earlier.",
-              highlight: "+40% sales in the first month",
+              text: "I'd been using the same keywords for three years without realizing they weren't what buyers were actually searching for. Sales went up about 40% after fixing 8 listings.",
+              detail: "Sales up ~40% · first month after optimizing",
             },
             {
               name: "Priya R.",
               shop: "ThreadAndSoul",
               avatar: "PR",
-              stars: 5,
-              text: "Writing listings used to take me an hour each. Now I get a full optimized draft in 60 seconds and they convert better than what I wrote myself.",
-              highlight: "60 seconds to a fully optimized listing",
+              text: "Writing listings used to take me a long time. Now I let Listifly do a draft and I just review it. It's usually better than what I would have written anyway.",
+              detail: "Optimized 40 listings · in an afternoon",
             },
           ].map((t) => (
-            <div key={t.name} className="border border-warm-border rounded-2xl p-6 flex flex-col gap-4 hover:border-brand/25 hover:shadow-md transition-all">
-              {/* Stars */}
+            <div key={t.name} className="bg-white border border-gray-100 rounded-2xl p-6 flex flex-col gap-4">
               <div className="flex gap-0.5">
-                {[...Array(t.stars)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-brand fill-brand" />
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 text-brand fill-brand" />
                 ))}
-              </div>
-
-              {/* Highlight */}
-              <div className="bg-brand-light text-brand text-xs font-bold px-3 py-1.5 rounded-full inline-block self-start">
-                {t.highlight}
               </div>
 
               <p className="text-gray-700 text-sm leading-relaxed flex-1">&ldquo;{t.text}&rdquo;</p>
 
-              <div className="flex items-center gap-3 pt-2 border-t border-warm-border">
-                <div className="w-9 h-9 rounded-full bg-brand-light text-brand-muted text-xs font-bold flex items-center justify-center shrink-0">
+              <div className="text-xs text-brand font-medium bg-brand-light px-3 py-1.5 rounded-full self-start">
+                {t.detail}
+              </div>
+
+              <div className="flex items-center gap-3 pt-3 border-t border-gray-100">
+                <div className="w-8 h-8 rounded-full bg-gray-100 text-gray-500 text-xs font-semibold flex items-center justify-center shrink-0">
                   {t.avatar}
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900 text-sm">{t.name}</div>
+                  <div className="font-medium text-gray-900 text-sm">{t.name}</div>
                   <div className="text-xs text-gray-400">{t.shop}</div>
                 </div>
               </div>
@@ -404,34 +364,38 @@ export default function LoginPage() {
       </section>
 
       {/* ── TRUST ── */}
-      <section className="bg-surface border-t border-warm-border py-16">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-extrabold text-gray-900 mb-2">Your shop is safe with us</h2>
-          <p className="text-gray-500 text-sm mb-10">We built Listifly with Etsy sellers&apos; trust as the #1 priority.</p>
+      <section className="bg-[#fafaf9] border-y border-gray-100 py-20">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="max-w-lg mb-10">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">You stay in control</h2>
+            <p className="text-gray-500 text-sm leading-relaxed">
+              We know giving a tool access to your shop can feel like a big step. Here&apos;s exactly what that means.
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {[
               {
-                icon: ShieldCheck,
+                icon: Eye,
                 title: "Read-only by default",
-                desc: "We can only read your listing data. We cannot edit or delete anything without your explicit approval.",
+                desc: "We can read your listing data, but we have no ability to edit, delete, or change anything in your shop without you explicitly approving each update.",
               },
               {
-                icon: Zap,
-                title: "You approve every change",
-                desc: "Review every rewrite before it goes live. Nothing is pushed to Etsy without your say.",
+                icon: ShieldCheck,
+                title: "You review before anything goes live",
+                desc: "Every rewrite is shown to you first. You can edit it, reject it, or approve it. Nothing is pushed to Etsy until you click confirm.",
               },
               {
-                icon: TrendingUp,
-                title: "Your data stays yours",
-                desc: "We never sell your shop data. We never share it. You can disconnect at any time from Etsy.",
+                icon: CheckCircle2,
+                title: "Your data isn't shared or sold",
+                desc: "We don't share your shop data with third parties. You can disconnect Listifly from your Etsy account at any time from your Etsy settings.",
               },
             ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white border border-warm-border rounded-2xl p-6 text-left">
-                <div className="w-10 h-10 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-green-500" />
+              <div key={title} className="bg-white border border-gray-100 rounded-2xl p-6">
+                <div className="w-9 h-9 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center mb-4">
+                  <Icon className="w-4 h-4 text-gray-400" />
                 </div>
-                <p className="font-bold text-gray-900 text-sm mb-1">{title}</p>
+                <p className="font-semibold text-gray-800 text-sm mb-1.5">{title}</p>
                 <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
               </div>
             ))}
@@ -440,44 +404,42 @@ export default function LoginPage() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="py-24 bg-white">
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-5">
-            Stop guessing.<br />
-            <span className="text-brand">Start ranking.</span>
-          </h2>
-          <p className="text-gray-500 text-lg mb-10 leading-relaxed">
-            Your first 3 listings are free. No credit card. No setup.
-            See your scores and exactly what to fix in under 60 seconds.
-          </p>
-          <ConnectButton label="Analyze My Listings Free →" />
-          <p className="text-sm text-gray-400 mt-4">
-            3 listings free · Cancel anytime · Read-only access
-          </p>
-        </div>
+      <section className="max-w-2xl mx-auto px-6 py-28 text-center">
+        <h2 className="text-4xl font-bold text-gray-900 leading-tight mb-4">
+          See how your listings
+          are performing.
+        </h2>
+        <p className="text-gray-500 text-lg mb-10 leading-relaxed">
+          Connect your shop and get a score for your first 3 listings —
+          free, in about a minute, with no commitment required.
+        </p>
+        <ConnectButton label="Analyze my listings free →" />
+        <p className="text-sm text-gray-400 mt-4">
+          Free for your first 3 listings · No credit card · Cancel anytime
+        </p>
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="border-t border-warm-border bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-10">
+      <footer className="border-t border-gray-100 bg-white">
+        <div className="max-w-5xl mx-auto px-6 py-10">
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-10">
 
             <div className="flex flex-col gap-2 max-w-xs">
               <div className="flex items-center gap-2">
-                <ListiflyLogo size={22} />
+                <ListiflyLogo size={20} />
                 <span className="font-bold text-gray-900 text-sm tracking-tight">Listifly</span>
               </div>
               <p className="text-xs text-gray-400 leading-relaxed">
-                AI-powered Etsy listing optimizer. Built for makers who want more sales, not more work.
+                Listing optimization for Etsy sellers who want more visibility without learning SEO.
               </p>
             </div>
 
             <div className="flex flex-col gap-1.5">
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Your data</p>
               {[
-                "Read-only access — we never edit or delete your listings",
+                "Read-only access — we never edit without your approval",
                 "Your shop data is never sold or shared",
-                "Disconnect anytime from Etsy settings",
+                "Disconnect anytime from your Etsy settings",
               ].map((item) => (
                 <p key={item} className="text-xs text-gray-400 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block shrink-0" />
@@ -492,14 +454,14 @@ export default function LoginPage() {
                 hello@listifly.app
               </a>
               <p className="text-xs text-gray-400 mt-1 leading-relaxed">
-                Questions? We reply within one business day.
+                We usually reply within one business day.
               </p>
             </div>
           </div>
 
-          <div className="border-t border-warm-border mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <div className="border-t border-gray-100 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
             <p className="text-xs text-gray-400">© 2026 Listifly. Not affiliated with or endorsed by Etsy, Inc.</p>
-            <p className="text-xs text-gray-400">Made for independent makers and small shop owners.</p>
+            <p className="text-xs text-gray-400">Built for independent makers and small shop owners.</p>
           </div>
         </div>
       </footer>
