@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                   String         @id @default(cuid())
+  etsyUserId           String         @unique
+  shopId               String?
+  shopName             String?
+  accessToken          String
+  refreshToken         String?
+  tokenExpiry          DateTime?
+  plan                 String         @default("free")  // "free" | "pro"
+  analysisCount        Int            @default(0)
+  paypalSubscriptionId String?
+  createdAt            DateTime       @default(now())
+  listings             Listing[]
+  drafts               ContentDraft[]
+}
+
+model Listing {
+  id            String         @id @default(cuid())
+  userId        String
+  etsyListingId String
+  title         String
+  description   String         @db.Text
+  tags          String[]
+  imageUrls     String[]
+  price         Float
+  score         Int?
+  scoreBreakdown Json?
+  suggestions   Json?
+  analyzedAt    DateTime?
+  createdAt     DateTime       @default(now())
+  user          User           @relation(fields: [userId], references: [id])
+  drafts        ContentDraft[]
+
+  @@unique([userId, etsyListingId])
+}
+
+model ContentDraft {
+  id          String   @id @default(cuid())
+  userId      String
+  listingId   String?
+  title       String?
+  description String?  @db.Text
+  tags        String[]
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id])
+  listing     Listing? @relation(fields: [listingId], references: [id])
+}
