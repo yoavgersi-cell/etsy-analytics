@@ -46,103 +46,104 @@ export default function LoginPage() {
       </nav>
 
       {/* ── HERO ── */}
-      <section className="max-w-6xl mx-auto px-6 pt-20 pb-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="relative overflow-hidden py-24 px-6">
 
-          {/* Left: copy */}
-          <div>
-            <div className="inline-flex items-center gap-2 text-sm text-gray-500 bg-gray-50 border border-gray-100 px-4 py-1.5 rounded-full mb-8 font-medium">
-              <TrendingUp className="w-3.5 h-3.5 text-brand" />
-              4,000+ Etsy sellers use Listifly
-            </div>
+        {/* Nordic gradient blob */}
+        <div
+          className="absolute inset-0 flex items-center justify-center pointer-events-none"
+          aria-hidden
+        >
+          <div
+            className="w-[900px] h-[900px] rounded-full opacity-100"
+            style={{ background: "radial-gradient(circle, oklch(0.38 0.15 248 / 0.10) 0%, oklch(0.38 0.15 248 / 0.04) 50%, transparent 72%)" }}
+          />
+        </div>
 
-            <h1 className="text-[2.6rem] sm:text-[3.2rem] font-bold text-gray-900 leading-[1.1] tracking-tight mb-6">
-              Your Etsy listings
-              <br />
-              could be reaching
-              <br />
-              <span className="text-brand">a lot more buyers.</span>
-            </h1>
-
-            <p className="text-[17px] text-gray-500 mb-9 leading-relaxed max-w-lg">
-              Listifly scans your shop, finds what&apos;s limiting your search visibility,
-              and rewrites your listings so more buyers can actually find you.
-            </p>
-
-            <div className="flex flex-col items-start gap-3">
-              <CTA />
-              <p className="text-sm text-gray-400">
-                First 3 listings free · No credit card · Nothing changes without your approval
-              </p>
-            </div>
-          </div>
-
-          {/* Right: before/after card */}
-          <div className="lg:pt-4">
-
-        <div className="bg-white border border-gray-100 rounded-3xl shadow-sm overflow-hidden">
-
-          {/* Listing label */}
-          <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
-            <div>
-              <p className="text-sm font-medium text-gray-700">Floral Baby Shower Invitation Template</p>
-              <p className="text-xs text-gray-400 mt-0.5">Etsy listing · Digital download</p>
-            </div>
-            <div className="text-xs text-gray-400 bg-white border border-gray-100 px-3 py-1 rounded-full">
-              Real example
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 divide-x divide-gray-100">
-            {/* Before */}
-            <div className="p-6 space-y-4">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Before</p>
-              <ScoreBadge score={42} label="Listing score" />
-              <div className="space-y-2.5">
-                {[
-                  "Title not matching buyer searches",
-                  "6 keywords missing",
-                  "Only 7 of 13 tags used",
-                ].map((issue) => (
-                  <div key={issue} className="flex items-start gap-2 text-xs text-gray-400">
-                    <AlertCircle className="w-3.5 h-3.5 text-gray-300 shrink-0 mt-0.5" />
-                    {issue}
-                  </div>
-                ))}
+        {/* Floating card — left (score before/after) */}
+        <div className="hidden lg:block absolute left-[4%] top-1/2 -translate-y-1/2 z-10">
+          <div className="bg-white border border-warm-border rounded-2xl shadow-md p-5 w-52">
+            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Listing score</p>
+            <div className="flex items-end gap-3 mb-3">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-gray-200">42</div>
+                <div className="text-[10px] text-gray-400 mt-0.5">Before</div>
+              </div>
+              <ArrowRight className="w-4 h-4 text-brand mb-2 shrink-0" />
+              <div className="text-center">
+                <div className="text-3xl font-bold text-brand">89</div>
+                <div className="text-[10px] text-brand-muted mt-0.5">After</div>
               </div>
             </div>
-
-            {/* After */}
-            <div className="p-6 space-y-4">
-              <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">After Listifly</p>
-                <span className="text-[10px] text-brand font-semibold bg-brand-light px-2 py-0.5 rounded-full">~40 sec</span>
-              </div>
-              <ScoreBadge score={89} label="Listing score" />
-              <div className="space-y-2.5">
-                {[
-                  "Title rewritten for Etsy search",
-                  "High-traffic keywords added",
-                  "All 13 tags filled in",
-                ].map((fix) => (
-                  <div key={fix} className="flex items-start gap-2 text-xs text-gray-600">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-brand shrink-0 mt-0.5" />
-                    {fix}
-                  </div>
-                ))}
-              </div>
+            <div className="space-y-1.5 border-t border-warm-border pt-3">
+              {["Title rewritten", "All 13 tags filled", "Keywords added"].map((fix) => (
+                <div key={fix} className="flex items-center gap-1.5 text-[11px] text-gray-600">
+                  <CheckCircle2 className="w-3 h-3 text-brand shrink-0" />
+                  {fix}
+                </div>
+              ))}
             </div>
-          </div>
-
-          <div className="px-6 py-3.5 border-t border-gray-100 flex items-center justify-center gap-2">
-            <ArrowRight className="w-3.5 h-3.5 text-brand" />
-            <p className="text-xs text-gray-500 font-medium">Views increased from 14/day to 70+ within 3 weeks</p>
           </div>
         </div>
+
+        {/* Floating card — right (views stat) */}
+        <div className="hidden lg:block absolute right-[4%] top-1/2 -translate-y-[60%] z-10">
+          <div className="bg-white border border-warm-border rounded-2xl shadow-md p-5 w-48">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 rounded-xl bg-brand-light border border-brand/20 flex items-center justify-center">
+                <TrendingUp className="w-4 h-4 text-brand" />
+              </div>
+              <div>
+                <div className="text-xl font-bold text-gray-900">+68%</div>
+                <div className="text-[10px] text-gray-400">avg. more views</div>
+              </div>
+            </div>
+            <p className="text-[11px] text-gray-500 border-t border-warm-border pt-3 leading-snug">
+              Sellers see results within 2–3 weeks of optimizing.
+            </p>
+          </div>
+        </div>
+
+        {/* Center content */}
+        <div className="relative z-10 text-center max-w-3xl mx-auto">
+
+          <h1 className="text-[3rem] sm:text-[4rem] font-bold text-gray-900 leading-[1.08] tracking-tight mb-6">
+            More buyers find
+            <br />
+            your Etsy listings.
+            <br />
+            <span className="text-brand">Starting this week.</span>
+          </h1>
+
+          <p className="text-[18px] text-gray-600 max-w-xl mx-auto mb-8 leading-relaxed">
+            Listifly scans your shop, finds what&apos;s limiting your search visibility,
+            and rewrites your listings so buyers can actually find you.
+          </p>
+
+          {/* Social proof avatars */}
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <div className="flex -space-x-2">
+              {["SK", "MT", "PR", "JL", "AK"].map((init, i) => (
+                <div
+                  key={i}
+                  className="w-8 h-8 rounded-full bg-brand-light border-2 border-white text-brand-muted text-[10px] font-bold flex items-center justify-center"
+                >
+                  {init}
+                </div>
+              ))}
+            </div>
+            <p className="text-sm text-gray-600 font-medium">
+              Trusted by <span className="font-bold text-gray-900">4,000+</span> Etsy sellers
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center gap-3">
+            <CTA label="Analyze my listings free →" />
+            <p className="text-sm text-gray-400">
+              First 3 listings free · No credit card · Nothing changes without your approval
+            </p>
           </div>
         </div>
       </section>
-      <div className="pb-20" />
 
       {/* ── PROBLEM ── */}
       <section className="bg-surface border-y border-warm-border py-24">
