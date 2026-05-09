@@ -5,15 +5,15 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* Listifly brand palette — Nordic */
-  --color-brand:        oklch(0.42 0.13 248);  /* nordic deep blue */
-  --color-brand-hover:  oklch(0.35 0.13 248);  /* darker on hover */
-  --color-brand-light:  oklch(0.96 0.02 248);  /* soft blue-gray tint */
-  --color-brand-muted:  oklch(0.32 0.10 248);  /* deep blue text */
-  --color-brand-ring:   oklch(0.58 0.10 248);  /* pulse / accent */
-  --color-ink:          oklch(0.18 0.04 248);  /* nordic dark navy */
-  --color-surface:      oklch(0.975 0.006 248); /* cool off-white */
-  --color-warm-border:  oklch(0.92 0.008 248);  /* cool card border */
+  /* Listifly brand palette — Nordic high-contrast */
+  --color-brand:        oklch(0.38 0.15 248);  /* nordic deep blue */
+  --color-brand-hover:  oklch(0.31 0.15 248);  /* darker on hover */
+  --color-brand-light:  oklch(0.94 0.03 248);  /* stronger blue tint */
+  --color-brand-muted:  oklch(0.28 0.12 248);  /* deep blue text */
+  --color-brand-ring:   oklch(0.55 0.12 248);  /* pulse / accent */
+  --color-ink:          oklch(0.14 0.04 248);  /* near-black navy */
+  --color-surface:      oklch(0.968 0.008 248); /* cool off-white */
+  --color-warm-border:  oklch(0.88 0.012 248);  /* stronger card border */
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
