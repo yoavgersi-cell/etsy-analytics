@@ -32,7 +32,7 @@ export default function LoginPage() {
     <div className="min-h-screen bg-white text-gray-900 antialiased">
 
       {/* ── Nav ── */}
-      <nav className="px-6 py-5 flex items-center justify-between max-w-5xl mx-auto border-b border-gray-100">
+      <nav className="px-6 py-5 flex items-center justify-between max-w-6xl mx-auto border-b border-gray-100">
         <div className="flex items-center gap-2.5">
           <ListiflyLogo size={26} />
           <span className="font-bold text-gray-900 tracking-tight text-[15px]">Listifly</span>
@@ -46,34 +46,40 @@ export default function LoginPage() {
       </nav>
 
       {/* ── HERO ── */}
-      <section className="max-w-3xl mx-auto px-6 pt-20 pb-10 text-center">
+      <section className="max-w-6xl mx-auto px-6 pt-20 pb-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-        <div className="inline-flex items-center gap-2 text-sm text-gray-500 bg-gray-50 border border-gray-100 px-4 py-1.5 rounded-full mb-10 font-medium">
-          <TrendingUp className="w-3.5 h-3.5 text-brand" />
-          4,000+ Etsy sellers use Listifly
-        </div>
+          {/* Left: copy */}
+          <div>
+            <div className="inline-flex items-center gap-2 text-sm text-gray-500 bg-gray-50 border border-gray-100 px-4 py-1.5 rounded-full mb-8 font-medium">
+              <TrendingUp className="w-3.5 h-3.5 text-brand" />
+              4,000+ Etsy sellers use Listifly
+            </div>
 
-        <h1 className="text-[2.75rem] sm:text-[3.5rem] font-bold text-gray-900 leading-[1.1] tracking-tight mb-6">
-          Most sellers don&apos;t know
-          <br />
-          which listings are
-          <br />
-          <span className="text-brand">costing them sales.</span>
-        </h1>
+            <h1 className="text-[2.6rem] sm:text-[3.2rem] font-bold text-gray-900 leading-[1.1] tracking-tight mb-6">
+              Your Etsy listings
+              <br />
+              could be reaching
+              <br />
+              <span className="text-brand">a lot more buyers.</span>
+            </h1>
 
-        <p className="text-lg text-gray-500 max-w-md mx-auto mb-10 leading-relaxed">
-          Listifly scans your shop and shows you exactly which listings
-          aren&apos;t reaching buyers — and what to do about it.
-        </p>
+            <p className="text-[17px] text-gray-500 mb-9 leading-relaxed max-w-lg">
+              Listifly scans your shop, finds what&apos;s limiting your search visibility,
+              and rewrites your listings so more buyers can actually find you.
+            </p>
 
-        <CTA />
-        <p className="text-sm text-gray-400 mt-3.5">
-          First 3 listings free · No credit card · Nothing changes without your approval
-        </p>
-      </section>
+            <div className="flex flex-col items-start gap-3">
+              <CTA />
+              <p className="text-sm text-gray-400">
+                First 3 listings free · No credit card · Nothing changes without your approval
+              </p>
+            </div>
+          </div>
 
-      {/* ── BEFORE / AFTER ── */}
-      <section className="max-w-2xl mx-auto px-6 pb-24">
+          {/* Right: before/after card */}
+          <div className="lg:pt-4">
+
         <div className="bg-white border border-gray-100 rounded-3xl shadow-sm overflow-hidden">
 
           {/* Listing label */}
@@ -133,7 +139,10 @@ export default function LoginPage() {
             <p className="text-xs text-gray-500 font-medium">Views increased from 14/day to 70+ within 3 weeks</p>
           </div>
         </div>
+          </div>
+        </div>
       </section>
+      <div className="pb-20" />
 
       {/* ── PROBLEM ── */}
       <section className="bg-[#f9f9f8] border-y border-gray-100 py-24">
