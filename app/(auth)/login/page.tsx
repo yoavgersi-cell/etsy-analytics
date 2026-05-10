@@ -439,19 +439,37 @@ export default function LoginPage() {
 
       {/* ── STATS ── */}
       <section id="results" className="max-w-6xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-warm-border border border-warm-border rounded-2xl overflow-hidden bg-white shadow-sm">
-          {[
-            { value: "4,000+", label: "Etsy sellers", sub: "actively using Listifly" },
-            { value: "2–3 wks", label: "Typical time", sub: "to see more views" },
-            { value: "68%", label: "Avg. view increase", sub: "in the first month" },
-            { value: "2.4M+", label: "Listings scored", sub: "across all categories" },
-          ].map((s) => (
-            <div key={s.label} className="px-8 py-8 space-y-1">
-              <div className="text-[2.2rem] font-bold text-gray-900 tracking-tight leading-none">{s.value}</div>
-              <div className="text-[13px] font-semibold text-gray-700 pt-1">{s.label}</div>
-              <div className="text-xs text-gray-500">{s.sub}</div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+          {/* Hero stat — main outcome */}
+          <div className="md:col-span-1 bg-brand rounded-2xl px-8 py-9 flex flex-col justify-between">
+            <p className="text-[11px] font-bold text-white/50 uppercase tracking-widest mb-4">The result</p>
+            <div>
+              <div className="text-[3.6rem] font-bold text-white leading-none tracking-tight mb-2">+68%</div>
+              <p className="text-white/90 text-[15px] font-medium leading-snug">more views within the first month of optimizing</p>
             </div>
-          ))}
+            <p className="text-white/40 text-[11px] mt-6">Based on real user data</p>
+          </div>
+
+          {/* Supporting stats */}
+          <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+            <div className="bg-white border border-warm-border rounded-2xl px-8 py-8 flex flex-col justify-between">
+              <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-4">Community</p>
+              <div>
+                <div className="text-[3rem] font-bold text-gray-900 leading-none tracking-tight mb-2">4,000+</div>
+                <p className="text-gray-600 text-[14px]">Etsy sellers already improving their listings</p>
+              </div>
+            </div>
+
+            <div className="bg-white border border-warm-border rounded-2xl px-8 py-8 flex flex-col justify-between">
+              <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-4">Time to results</p>
+              <div>
+                <div className="text-[3rem] font-bold text-gray-900 leading-none tracking-tight mb-2">2–3 wks</div>
+                <p className="text-gray-600 text-[14px]">Most sellers see more views within 2–3 weeks</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
