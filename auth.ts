@@ -26,7 +26,7 @@ function EtsyProvider(options: OAuthUserConfig<EtsyProfile>): OAuthConfig<EtsyPr
         const res = await fetch("https://openapi.etsy.com/v3/application/users/me", {
           headers: {
             Authorization: `Bearer ${tokens.access_token}`,
-            "x-api-key": process.env.ETSY_CLIENT_ID!,
+            "x-api-key": `${process.env.ETSY_CLIENT_ID}:${process.env.ETSY_CLIENT_SECRET}`,
           },
         })
         return res.json()
@@ -121,8 +121,8 @@ const nextAuth = NextAuth({
             accessToken,
             refreshToken,
             tokenExpiry: expiresAt,
-            shopId,
-            shopName,
+            // only overwrite shopId/shopName if we successfully fetched them
+            ...(shopId && { shopId, shopName }),
           },
           create: {
             etsyUserId: String(etsyProfile.user_id),

@@ -25,7 +25,7 @@ async function etsyFetch(path: string, accessToken: string) {
   const res = await fetch(`${ETSY_API_BASE}${path}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
-      "x-api-key": process.env.ETSY_CLIENT_ID!,
+      "x-api-key": `${process.env.ETSY_CLIENT_ID}:${process.env.ETSY_CLIENT_SECRET}`,
     },
   })
   if (!res.ok) {
