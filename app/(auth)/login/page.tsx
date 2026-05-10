@@ -32,18 +32,50 @@ export default function LoginPage() {
     <div className="min-h-screen bg-white text-gray-900 antialiased">
 
       {/* ── Nav ── */}
-      <nav className="px-6 py-5 flex items-center justify-between max-w-6xl mx-auto border-b border-gray-100">
-        <div className="flex items-center gap-2.5">
-          <ListiflyLogo size={26} />
-          <span className="font-bold text-gray-900 tracking-tight text-[15px]">Listifly</span>
-        </div>
-        <button
-          onClick={() => signIn("etsy", { callbackUrl: "/dashboard" })}
-          className="text-sm text-gray-400 hover:text-gray-700 transition-colors"
-        >
-          Sign in
-        </button>
-      </nav>
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-warm-border">
+        <nav className="px-6 h-16 flex items-center justify-between max-w-6xl mx-auto">
+
+          {/* Logo */}
+          <div className="flex items-center gap-2.5 shrink-0">
+            <ListiflyLogo size={26} />
+            <span className="font-bold text-gray-900 tracking-tight text-[15px]">Listifly</span>
+          </div>
+
+          {/* Center links */}
+          <div className="hidden md:flex items-center gap-1">
+            {[
+              { label: "Features", href: "#features" },
+              { label: "How it works", href: "#how-it-works" },
+              { label: "Pricing", href: "#pricing" },
+              { label: "Results", href: "#results" },
+            ].map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                className="px-4 py-2 text-sm text-gray-500 hover:text-gray-900 font-medium rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+
+          {/* Right: sign in + CTA */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => signIn("etsy", { callbackUrl: "/dashboard" })}
+              className="hidden sm:block text-sm text-gray-500 hover:text-gray-900 font-medium transition-colors"
+            >
+              Sign in
+            </button>
+            <button
+              onClick={() => signIn("etsy", { callbackUrl: "/dashboard" })}
+              className="bg-brand hover:bg-brand-hover text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors shadow-sm"
+            >
+              Start free →
+            </button>
+          </div>
+        </nav>
+      </header>
 
       {/* ── HERO ── */}
       <section className="relative overflow-hidden py-24 px-6">
@@ -146,7 +178,7 @@ export default function LoginPage() {
       </section>
 
       {/* ── PROBLEM ── */}
-      <section className="bg-surface border-y border-warm-border py-24">
+      <section id="features" className="bg-surface border-y border-warm-border py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="max-w-2xl mb-14">
             <p className="text-xs font-semibold text-brand uppercase tracking-widest mb-4">What goes wrong</p>
@@ -198,7 +230,7 @@ export default function LoginPage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
+      <section id="how-it-works" className="max-w-6xl mx-auto px-6 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div>
             <p className="text-xs font-semibold text-brand uppercase tracking-widest mb-4">How it works</p>
@@ -312,7 +344,7 @@ export default function LoginPage() {
       </section>
 
       {/* ── STATS ── */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      <section id="results" className="max-w-6xl mx-auto px-6 py-20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-warm-border border border-warm-border rounded-2xl overflow-hidden bg-white shadow-sm">
           {[
             { value: "4,000+", label: "Etsy sellers", sub: "actively using Listifly" },
@@ -440,7 +472,7 @@ export default function LoginPage() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="bg-ink py-28">
+      <section id="pricing" className="bg-ink py-28">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-5 tracking-tight">
             See what&apos;s holding
