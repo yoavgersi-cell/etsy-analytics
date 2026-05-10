@@ -8,10 +8,13 @@ async function getFreshToken(user: {
   refreshToken: string | null
   tokenExpiry: Date | null
 }): Promise<string> {
-  const isExpired = user.tokenExpiry ? user.tokenExpiry < new Date() : true
+  const isExpired = user.tokenExpiry ? user.tokenExpiry < new Date() : false
   if (!isExpired) return user.accessToken
 
-  if (!user.refreshToken) throw new Error("Token expired and no refresh token available")
+  if (!user.refreshToken) {
+    console.warn(`[sync] token marked expired but no refresh token — using existing token for userId=${user.id}`)
+    return user.accessToken
+  }
 
   console.log(`[sync] refreshing expired token for userId=${user.id}`)
   const refreshed = await refreshAccessToken(user.refreshToken)

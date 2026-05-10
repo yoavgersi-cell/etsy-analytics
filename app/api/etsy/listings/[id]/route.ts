@@ -44,10 +44,8 @@ export async function PATCH(
 
   // Refresh token if needed
   let accessToken = user.accessToken
-  if (user.tokenExpiry && user.tokenExpiry < new Date()) {
-    if (!user.refreshToken) {
-      return Response.json({ error: "Session expired — please sign out and sign back in" }, { status: 401 })
-    }
+  const tokenExpired = user.tokenExpiry ? user.tokenExpiry < new Date() : false
+  if (tokenExpired && user.refreshToken) {
     try {
       const refreshed = await refreshAccessToken(user.refreshToken)
       accessToken = refreshed.access_token
