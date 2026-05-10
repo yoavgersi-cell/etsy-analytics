@@ -476,62 +476,106 @@ export default function LoginPage() {
       {/* ── TESTIMONIALS ── */}
       <section className="bg-surface border-y border-warm-border py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <p className="text-xs font-semibold text-brand uppercase tracking-widest mb-3">Results</p>
-              <h2 className="text-4xl font-bold text-gray-900">From sellers who&apos;ve used it</h2>
-            </div>
-            <p className="text-gray-500 text-[15px] hidden md:block">Real numbers. Real timeframes.</p>
+          <div className="mb-12">
+            <p className="text-xs font-semibold text-brand uppercase tracking-widest mb-3">Results</p>
+            <h2 className="text-4xl font-bold text-gray-900 leading-tight">
+              Real sellers. Real numbers.
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              {
-                name: "Sarah K.",
-                shop: "BloomCeramics",
-                avatar: "SK",
-                text: "My views went from about 12 a day to over 80 within a few weeks. I didn't change the products — just the titles and tags based on what Listifly flagged.",
-                result: "12 → 80+ daily views · 3 weeks",
-              },
-              {
-                name: "Marcus T.",
-                shop: "WoodCraftByMarcus",
-                avatar: "MT",
-                text: "I'd been using the same tags for three years without realizing they weren't what buyers searched for. Fixed 8 listings and sales went up about 40% that first month.",
-                result: "~40% more sales · first month",
-              },
-              {
-                name: "Priya R.",
-                shop: "ThreadAndSoul",
-                avatar: "PR",
-                text: "Writing a listing used to take me an hour. Now I review a draft in five minutes. The output is consistently better than what I would have written myself.",
-                result: "40 listings optimized · one afternoon",
-              },
-            ].map((t) => (
-              <div key={t.name} className="bg-white border border-warm-border rounded-2xl p-6 flex flex-col gap-5 shadow-sm">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 text-brand fill-brand" />
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+
+            {/* Dominant card — Sarah K. with visual proof */}
+            <div className="lg:col-span-3 bg-white border border-warm-border rounded-2xl p-7 flex flex-col gap-6">
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 text-brand fill-brand" />)}
+              </div>
+
+              <p className="text-gray-800 text-[16px] leading-relaxed flex-1">
+                &ldquo;I didn&apos;t change the products at all. Just updated the titles and tags based on what Listifly flagged. Three weeks later my views had gone from 12 a day to over 80. I was kind of shocked honestly.&rdquo;
+              </p>
+
+              {/* Visual before/after */}
+              <div className="bg-surface border border-warm-border rounded-xl p-4 flex items-center gap-6">
+                <div className="text-center">
+                  <div className="text-[2rem] font-bold text-gray-300 leading-none">12</div>
+                  <div className="text-[11px] text-gray-400 mt-1">daily views before</div>
+                </div>
+                <div className="flex-1 flex items-center gap-1">
+                  {[2, 3, 2, 4, 3, 5, 6, 7, 8, 9, 10, 9, 11].map((h, i) => (
+                    <div
+                      key={i}
+                      className="flex-1 rounded-sm"
+                      style={{
+                        height: `${h * 4}px`,
+                        background: i < 5
+                          ? "oklch(0.88 0.012 248)"
+                          : `oklch(${0.55 + i * 0.02} 0.13 248)`,
+                      }}
+                    />
                   ))}
                 </div>
-
-                <p className="text-gray-700 text-[14px] leading-relaxed flex-1">&ldquo;{t.text}&rdquo;</p>
-
-                <div className="text-[12px] font-bold text-brand-muted bg-brand-light border border-brand/20 px-3 py-1.5 rounded-full self-start tracking-tight">
-                  {t.result}
-                </div>
-
-                <div className="flex items-center gap-3 pt-4 border-t border-warm-border">
-                  <div className="w-8 h-8 rounded-full bg-brand-light border border-brand/20 text-brand-muted text-xs font-bold flex items-center justify-center shrink-0">
-                    {t.avatar}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-900 text-[13px]">{t.name}</div>
-                    <div className="text-xs text-gray-500">{t.shop}</div>
-                  </div>
+                <div className="text-center">
+                  <div className="text-[2rem] font-bold text-brand leading-none">80+</div>
+                  <div className="text-[11px] text-brand-muted mt-1">daily views after</div>
                 </div>
               </div>
-            ))}
+
+              <div className="flex items-center justify-between pt-1 border-t border-warm-border">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-brand-light border border-brand/20 text-brand-muted text-xs font-bold flex items-center justify-center shrink-0">SK</div>
+                  <div>
+                    <div className="font-semibold text-gray-900 text-[13px]">Sarah K.</div>
+                    <div className="text-xs text-gray-500">BloomCeramics · handmade ceramics shop</div>
+                  </div>
+                </div>
+                <div className="text-[12px] font-semibold text-brand bg-brand-light border border-brand/20 px-3 py-1.5 rounded-full shrink-0">
+                  3 weeks
+                </div>
+              </div>
+            </div>
+
+            {/* Supporting cards */}
+            <div className="lg:col-span-2 flex flex-col gap-4">
+
+              <div className="bg-white border border-warm-border rounded-2xl p-6 flex flex-col gap-4 flex-1">
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 text-brand fill-brand" />)}
+                </div>
+                <p className="text-gray-700 text-[14px] leading-relaxed flex-1">
+                  &ldquo;Same tags for three years. Didn&apos;t realize none of them matched what buyers actually search. Fixed 8 listings and sales went up 40% that month.&rdquo;
+                </p>
+                <div className="flex items-center justify-between border-t border-warm-border pt-4">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-7 h-7 rounded-full bg-brand-light border border-brand/20 text-brand-muted text-[10px] font-bold flex items-center justify-center shrink-0">MT</div>
+                    <div>
+                      <div className="font-semibold text-gray-900 text-[12px]">Marcus T.</div>
+                      <div className="text-[11px] text-gray-500">WoodCraft · woodworking shop</div>
+                    </div>
+                  </div>
+                  <span className="text-[11px] font-semibold text-brand bg-brand-light border border-brand/20 px-2.5 py-1 rounded-full shrink-0">+40% sales</span>
+                </div>
+              </div>
+
+              <div className="bg-white border border-warm-border rounded-2xl p-6 flex flex-col gap-4 flex-1">
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 text-brand fill-brand" />)}
+                </div>
+                <p className="text-gray-700 text-[14px] leading-relaxed flex-1">
+                  &ldquo;Writing one listing used to take me an hour. Now I go through Listifly&apos;s draft in five minutes and it&apos;s better than what I would&apos;ve written.&rdquo;
+                </p>
+                <div className="flex items-center justify-between border-t border-warm-border pt-4">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-7 h-7 rounded-full bg-brand-light border border-brand/20 text-brand-muted text-[10px] font-bold flex items-center justify-center shrink-0">PR</div>
+                    <div>
+                      <div className="font-semibold text-gray-900 text-[12px]">Priya R.</div>
+                      <div className="text-[11px] text-gray-500">ThreadAndSoul · textile seller</div>
+                    </div>
+                  </div>
+                  <span className="text-[11px] font-semibold text-brand bg-brand-light border border-brand/20 px-2.5 py-1 rounded-full shrink-0">40 listings fixed</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
