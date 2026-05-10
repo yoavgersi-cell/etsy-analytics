@@ -78,8 +78,8 @@ export async function PATCH(
     }
     if (msg.includes("404")) {
       return Response.json(
-        { error: "Etsy write access not yet approved. You can copy the optimized content above and paste it into Etsy manually while approval is pending." },
-        { status: 403 }
+        { error: "Listing not found on Etsy. It may have been deleted or the listing ID is incorrect." },
+        { status: 404 }
       )
     }
     return Response.json({ error: `Etsy error: ${msg}` }, { status: 500 })

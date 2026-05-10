@@ -25,7 +25,7 @@ async function etsyFetch(path: string, accessToken: string) {
   const res = await fetch(`${ETSY_API_BASE}${path}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
-      "x-api-key": `${process.env.ETSY_CLIENT_ID}:${process.env.ETSY_CLIENT_SECRET}`,
+      "x-api-key": process.env.ETSY_CLIENT_ID!,
     },
   })
   if (!res.ok) {
@@ -58,7 +58,6 @@ export async function updateEtsyListing(
   accessToken: string,
   data: { title?: string; description?: string; tags?: string[] }
 ): Promise<void> {
-  const apiKey = `${process.env.ETSY_CLIENT_ID}:${process.env.ETSY_CLIENT_SECRET}`
   const url = `${ETSY_API_BASE}/application/listings/${etsyListingId}`
 
   const form = new URLSearchParams()
@@ -72,7 +71,7 @@ export async function updateEtsyListing(
     method: "PATCH",
     headers: {
       Authorization: `Bearer ${accessToken}`,
-      "x-api-key": apiKey,
+      "x-api-key": process.env.ETSY_CLIENT_ID!,
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: form.toString(),
