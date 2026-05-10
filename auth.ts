@@ -17,6 +17,7 @@ function EtsyProvider(options: OAuthUserConfig<EtsyProfile>): OAuthConfig<EtsyPr
       url: "https://www.etsy.com/oauth/connect",
       params: {
         scope: "listings_r listings_w shops_r",
+        prompt: "login",
       },
     },
     token: "https://api.etsy.com/v3/public/oauth/token",

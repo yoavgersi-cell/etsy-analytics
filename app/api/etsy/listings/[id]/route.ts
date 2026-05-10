@@ -68,18 +68,6 @@ export async function PATCH(
     const msg = e instanceof Error ? e.message : String(e)
     console.error("[update listing] etsy error", msg)
 
-    if (msg.includes("403") || msg.includes("401")) {
-      return Response.json(
-        { error: "Write permission required — please sign out and sign back in to grant edit access." },
-        { status: 403 }
-      )
-    }
-    if (msg.includes("404")) {
-      return Response.json(
-        { error: "Listing not found on Etsy. It may have been deleted or the listing ID is incorrect." },
-        { status: 404 }
-      )
-    }
     return Response.json({ error: `Etsy error: ${msg}` }, { status: 500 })
   }
 

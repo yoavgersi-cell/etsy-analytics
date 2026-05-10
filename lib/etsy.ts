@@ -71,7 +71,7 @@ export async function updateEtsyListing(
     method: "PATCH",
     headers: {
       Authorization: `Bearer ${accessToken}`,
-      "x-api-key": process.env.ETSY_CLIENT_ID!,
+      "x-api-key": `${process.env.ETSY_CLIENT_ID}:${process.env.ETSY_CLIENT_SECRET}`,
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: form.toString(),
