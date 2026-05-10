@@ -3,7 +3,7 @@
 import { signIn } from "next-auth/react"
 import { ListiflyLogo } from "@/components/ranksy-logo"
 import { Button } from "@/components/ui/button"
-import { CheckCircle2, Star, Eye, ShieldCheck, Search, Tag, BarChart3, AlertCircle } from "lucide-react"
+import { CheckCircle2, Star, TrendingUp, Eye, ShieldCheck, Search, Tag, BarChart3, AlertCircle } from "lucide-react"
 
 function CTA({ label = "See how my listings are doing →" }: { label?: string }) {
   return (
@@ -78,97 +78,141 @@ export default function LoginPage() {
       </header>
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden pt-20 pb-28 px-6">
+      <section className="relative overflow-hidden pt-20 pb-24 px-6">
 
-        {/* Subtle top gradient */}
-        <div className="absolute inset-x-0 top-0 h-[480px] pointer-events-none" aria-hidden>
-          <div
-            className="absolute inset-0"
-            style={{ background: "radial-gradient(ellipse 80% 60% at 50% 0%, oklch(0.38 0.15 248 / 0.08) 0%, transparent 70%)" }}
-          />
+        {/* Background: soft radial glow */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden>
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 55% at 50% 0%, oklch(0.38 0.15 248 / 0.09) 0%, transparent 65%)" }} />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
+        {/* Wide container */}
+        <div className="relative z-10 max-w-6xl mx-auto">
 
-          {/* Headline */}
-          <h1 className="text-[3rem] sm:text-[4.2rem] font-bold text-gray-900 leading-[1.06] tracking-tight mb-5">
-            Your Etsy listings are
-            <br />
-            <span className="text-brand">closer to the top</span> than you think.
-          </h1>
-
-          {/* Subheadline */}
-          <p className="text-[18px] text-gray-500 max-w-[500px] mx-auto mb-10 leading-relaxed">
-            Listifly finds what&apos;s holding each listing back and rewrites it — ready to push live in one click.
-          </p>
-
-          {/* CTA */}
-          <div className="flex flex-col items-center gap-3 mb-14">
-            <CTA label="Analyze my listings free →" />
-            <p className="text-sm text-gray-400">
-              First 3 listings free · No credit card · You approve every change
+          {/* Center: headline + CTA */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h1 className="text-[2.8rem] sm:text-[4rem] font-bold text-gray-900 leading-[1.07] tracking-tight mb-5">
+              Your Etsy listings are losing sales
+              <br />
+              <span className="text-brand">to fixable problems.</span>
+            </h1>
+            <p className="text-[18px] text-gray-500 max-w-[480px] mx-auto mb-9 leading-relaxed">
+              Listifly scores every listing, shows exactly what&apos;s hurting your visibility, and rewrites it — ready to go live in one click.
             </p>
+            <div className="flex flex-col items-center gap-3">
+              <CTA label="Find my listing problems free →" />
+              <p className="text-sm text-gray-400">
+                First 3 listings free · No credit card · You approve every change
+              </p>
+            </div>
           </div>
 
-          {/* ── Before / After visual ── */}
-          <div className="max-w-2xl mx-auto bg-white border border-warm-border rounded-3xl shadow-[0_4px_32px_oklch(0_0_0/0.07)] overflow-hidden">
+          {/* Floating UI layer */}
+          <div className="relative flex items-start justify-center gap-5">
 
-            {/* Card header */}
-            <div className="flex items-center justify-between px-8 py-4 border-b border-warm-border bg-surface">
-              <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Listing score</p>
-              <span className="text-[11px] font-semibold text-brand bg-brand-light border border-brand/20 px-3 py-1 rounded-full">
-                Fixed in under a minute
-              </span>
-            </div>
+            {/* Left float: Score card */}
+            <div className="hidden lg:flex flex-col gap-3 w-52 mt-8 shrink-0">
 
-            {/* Score columns */}
-            <div className="grid grid-cols-2 divide-x divide-warm-border">
-
-              {/* Before */}
-              <div className="px-8 py-10 text-center">
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">Before optimization</p>
-                <div className="text-[88px] font-bold text-gray-200 leading-none tracking-tight tabular-nums">42</div>
-                <div className="mt-6 space-y-2">
-                  {["Missing 6 tags", "Title too generic", "No buyer keywords"].map((item) => (
-                    <div key={item} className="flex items-center justify-center gap-2 text-[12px] text-gray-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gray-200 shrink-0" />
-                      {item}
+              {/* Score before/after */}
+              <div className="bg-white border border-warm-border rounded-2xl shadow-md p-4">
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Listing score</p>
+                <div className="flex items-center gap-3">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-gray-200 leading-none">42</div>
+                    <div className="text-[10px] text-gray-400 mt-1">Before</div>
+                  </div>
+                  <div className="flex-1 h-px bg-gray-100 relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-brand opacity-60" />
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-brand leading-none">89</div>
+                    <div className="text-[10px] text-brand-muted mt-1">After</div>
+                  </div>
+                </div>
+                <div className="mt-3 pt-3 border-t border-warm-border space-y-1.5">
+                  {["Title rewritten", "13/13 tags filled", "Keywords added"].map(f => (
+                    <div key={f} className="flex items-center gap-1.5 text-[11px] text-gray-600">
+                      <CheckCircle2 className="w-3 h-3 text-brand shrink-0" />{f}
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* After */}
-              <div className="px-8 py-10 text-center bg-brand-light/30">
-                <p className="text-[10px] font-bold text-brand-muted uppercase tracking-widest mb-4">After optimization</p>
-                <div className="text-[88px] font-bold text-brand leading-none tracking-tight tabular-nums">89</div>
-                <div className="mt-6 space-y-2">
-                  {["All 13 tags filled", "Title rewritten", "Keywords added"].map((item) => (
-                    <div key={item} className="flex items-center justify-center gap-2 text-[12px] text-brand-muted">
-                      <CheckCircle2 className="w-3 h-3 text-brand shrink-0" />
-                      {item}
+              {/* Views badge */}
+              <div className="bg-white border border-warm-border rounded-2xl shadow-md p-4 flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center shrink-0">
+                  <TrendingUp className="w-4 h-4 text-green-600" />
+                </div>
+                <div>
+                  <div className="text-lg font-bold text-gray-900 leading-none">+68%</div>
+                  <div className="text-[11px] text-gray-500 mt-0.5">more views</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Center: main before/after card */}
+            <div className="flex-1 max-w-xl bg-white border border-warm-border rounded-3xl shadow-[0_8px_40px_oklch(0_0_0/0.08)] overflow-hidden">
+              <div className="flex items-center justify-between px-6 py-3.5 border-b border-warm-border bg-surface">
+                <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Optimization preview</p>
+                <span className="text-[11px] font-semibold text-brand bg-brand-light border border-brand/20 px-2.5 py-1 rounded-full">Fixed in &lt;1 min</span>
+              </div>
+              <div className="grid grid-cols-2 divide-x divide-warm-border">
+                <div className="px-6 py-8 text-center">
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Before</p>
+                  <div className="text-[72px] font-bold text-gray-200 leading-none tracking-tight tabular-nums">42</div>
+                  <div className="mt-4 space-y-1.5">
+                    {["Missing 6 tags", "Title too generic", "No buyer keywords"].map(item => (
+                      <div key={item} className="flex items-center justify-center gap-2 text-[12px] text-gray-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gray-200 shrink-0" />{item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="px-6 py-8 text-center bg-brand-light/30">
+                  <p className="text-[10px] font-bold text-brand-muted uppercase tracking-widest mb-3">After</p>
+                  <div className="text-[72px] font-bold text-brand leading-none tracking-tight tabular-nums">89</div>
+                  <div className="mt-4 space-y-1.5">
+                    {["All 13 tags filled", "Title rewritten", "Keywords added"].map(item => (
+                      <div key={item} className="flex items-center justify-center gap-2 text-[12px] text-brand-muted">
+                        <CheckCircle2 className="w-3 h-3 text-brand shrink-0" />{item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right float: keyword + social */}
+            <div className="hidden lg:flex flex-col gap-3 w-52 mt-8 shrink-0">
+
+              {/* Keyword suggestion card */}
+              <div className="bg-white border border-warm-border rounded-2xl shadow-md p-4">
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Top keywords</p>
+                <div className="space-y-1.5">
+                  {[
+                    { kw: "gift for her",   vol: "High" },
+                    { kw: "birthday gift",  vol: "High" },
+                    { kw: "custom mug",     vol: "Med" },
+                  ].map(({ kw, vol }) => (
+                    <div key={kw} className="flex items-center justify-between text-[11px]">
+                      <span className="text-gray-700 font-medium">{kw}</span>
+                      <span className={`px-1.5 py-0.5 rounded font-semibold ${vol === "High" ? "bg-green-50 text-green-700" : "bg-gray-100 text-gray-500"}`}>{vol}</span>
                     </div>
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* Social proof — below visual */}
-          <div className="flex items-center justify-center gap-3 mt-10">
-            <div className="flex -space-x-2">
-              {["SK", "MT", "PR", "JL", "AK"].map((init, i) => (
-                <div
-                  key={i}
-                  className="w-8 h-8 rounded-full bg-brand-light border-2 border-white text-brand-muted text-[10px] font-bold flex items-center justify-center"
-                >
-                  {init}
+              {/* Social proof */}
+              <div className="bg-white border border-warm-border rounded-2xl shadow-md p-4">
+                <div className="flex -space-x-2 mb-2.5">
+                  {["SK", "MT", "PR", "JL", "AK"].map((init, i) => (
+                    <div key={i} className="w-7 h-7 rounded-full bg-brand-light border-2 border-white text-brand-muted text-[9px] font-bold flex items-center justify-center">{init}</div>
+                  ))}
                 </div>
-              ))}
+                <p className="text-[12px] text-gray-600 font-medium leading-snug">
+                  <span className="font-bold text-gray-900">4,000+ sellers</span> already improving their listings
+                </p>
+              </div>
             </div>
-            <p className="text-[14px] text-gray-600">
-              Join <span className="font-bold text-gray-900">4,000+</span> Etsy sellers improving their listings
-            </p>
           </div>
         </div>
       </section>
