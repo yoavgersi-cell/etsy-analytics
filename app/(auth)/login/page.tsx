@@ -85,50 +85,30 @@ export default function LoginPage() {
           <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 55% at 50% 0%, oklch(0.38 0.15 248 / 0.09) 0%, transparent 65%)" }} />
         </div>
 
-        {/* Wide container */}
-        <div className="relative z-10 max-w-6xl mx-auto">
+        {/* Full-width container */}
+        <div className="relative z-10 max-w-[1280px] mx-auto">
 
-          {/* Center: headline + CTA */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h1 className="text-[2.8rem] sm:text-[4rem] font-bold text-gray-900 leading-[1.07] tracking-tight mb-5">
-              Your Etsy listings are losing sales
-              <br />
-              <span className="text-brand">to fixable problems.</span>
-            </h1>
-            <p className="text-[18px] text-gray-500 max-w-[480px] mx-auto mb-9 leading-relaxed">
-              Listifly scores every listing, shows exactly what&apos;s hurting your visibility, and rewrites it — ready to go live in one click.
-            </p>
-            <div className="flex flex-col items-center gap-3">
-              <CTA label="Find my listing problems free →" />
-              <p className="text-sm text-gray-400">
-                First 3 listings free · No credit card · You approve every change
-              </p>
-            </div>
-          </div>
+          {/* Single unified row: left float | center | right float */}
+          <div className="flex items-center gap-6 xl:gap-10">
 
-          {/* Floating UI layer */}
-          <div className="relative flex items-start justify-center gap-5">
+            {/* ── Left float column ── */}
+            <div className="hidden lg:flex flex-col gap-4 w-56 xl:w-60 shrink-0">
 
-            {/* Left float: Score card */}
-            <div className="hidden lg:flex flex-col gap-3 w-52 mt-8 shrink-0">
-
-              {/* Score before/after */}
+              {/* Score card */}
               <div className="bg-white border border-warm-border rounded-2xl shadow-md p-4">
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Listing score</p>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 mb-3">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-gray-200 leading-none">42</div>
                     <div className="text-[10px] text-gray-400 mt-1">Before</div>
                   </div>
-                  <div className="flex-1 h-px bg-gray-100 relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-brand opacity-60" />
-                  </div>
+                  <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-200 to-brand rounded-full" />
                   <div className="text-center">
                     <div className="text-3xl font-bold text-brand leading-none">89</div>
                     <div className="text-[10px] text-brand-muted mt-1">After</div>
                   </div>
                 </div>
-                <div className="mt-3 pt-3 border-t border-warm-border space-y-1.5">
+                <div className="pt-3 border-t border-warm-border space-y-1.5">
                   {["Title rewritten", "13/13 tags filled", "Keywords added"].map(f => (
                     <div key={f} className="flex items-center gap-1.5 text-[11px] text-gray-600">
                       <CheckCircle2 className="w-3 h-3 text-brand shrink-0" />{f}
@@ -137,65 +117,81 @@ export default function LoginPage() {
                 </div>
               </div>
 
-              {/* Views badge */}
+              {/* +68% badge */}
               <div className="bg-white border border-warm-border rounded-2xl shadow-md p-4 flex items-center gap-3">
                 <div className="w-9 h-9 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center shrink-0">
                   <TrendingUp className="w-4 h-4 text-green-600" />
                 </div>
                 <div>
-                  <div className="text-lg font-bold text-gray-900 leading-none">+68%</div>
-                  <div className="text-[11px] text-gray-500 mt-0.5">more views</div>
+                  <div className="text-xl font-bold text-gray-900 leading-none">+68%</div>
+                  <div className="text-[11px] text-gray-500 mt-0.5">more views / mo</div>
                 </div>
               </div>
             </div>
 
-            {/* Center: main before/after card */}
-            <div className="flex-1 max-w-xl bg-white border border-warm-border rounded-3xl shadow-[0_8px_40px_oklch(0_0_0/0.08)] overflow-hidden">
-              <div className="flex items-center justify-between px-6 py-3.5 border-b border-warm-border bg-surface">
-                <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Optimization preview</p>
-                <span className="text-[11px] font-semibold text-brand bg-brand-light border border-brand/20 px-2.5 py-1 rounded-full">Fixed in &lt;1 min</span>
+            {/* ── Center: headline + CTA + preview card ── */}
+            <div className="flex-1 flex flex-col items-center text-center min-w-0">
+              <h1 className="text-[2.6rem] sm:text-[3.4rem] xl:text-[3.8rem] font-bold text-gray-900 leading-[1.07] tracking-tight mb-5">
+                Your listings are losing sales
+                <br className="hidden sm:block" />
+                <span className="text-brand"> to fixable problems.</span>
+              </h1>
+              <p className="text-[17px] text-gray-500 max-w-[420px] mx-auto mb-8 leading-relaxed">
+                Listifly scores every listing, shows exactly what&apos;s wrong, and rewrites it — ready to push live in one click.
+              </p>
+              <div className="flex flex-col items-center gap-3 mb-10">
+                <CTA label="Find my listing problems free →" />
+                <p className="text-sm text-gray-400">First 3 free · No credit card · You approve every change</p>
               </div>
-              <div className="grid grid-cols-2 divide-x divide-warm-border">
-                <div className="px-6 py-8 text-center">
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Before</p>
-                  <div className="text-[72px] font-bold text-gray-200 leading-none tracking-tight tabular-nums">42</div>
-                  <div className="mt-4 space-y-1.5">
-                    {["Missing 6 tags", "Title too generic", "No buyer keywords"].map(item => (
-                      <div key={item} className="flex items-center justify-center gap-2 text-[12px] text-gray-400">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-200 shrink-0" />{item}
-                      </div>
-                    ))}
-                  </div>
+
+              {/* Before/after preview card — below CTA */}
+              <div className="w-full max-w-lg bg-white border border-warm-border rounded-3xl shadow-[0_8px_40px_oklch(0_0_0/0.08)] overflow-hidden">
+                <div className="flex items-center justify-between px-5 py-3 border-b border-warm-border bg-surface">
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Score preview</p>
+                  <span className="text-[10px] font-semibold text-brand bg-brand-light border border-brand/20 px-2.5 py-1 rounded-full">Fixed in under a minute</span>
                 </div>
-                <div className="px-6 py-8 text-center bg-brand-light/30">
-                  <p className="text-[10px] font-bold text-brand-muted uppercase tracking-widest mb-3">After</p>
-                  <div className="text-[72px] font-bold text-brand leading-none tracking-tight tabular-nums">89</div>
-                  <div className="mt-4 space-y-1.5">
-                    {["All 13 tags filled", "Title rewritten", "Keywords added"].map(item => (
-                      <div key={item} className="flex items-center justify-center gap-2 text-[12px] text-brand-muted">
-                        <CheckCircle2 className="w-3 h-3 text-brand shrink-0" />{item}
-                      </div>
-                    ))}
+                <div className="grid grid-cols-2 divide-x divide-warm-border">
+                  <div className="px-5 py-7 text-center">
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Before</p>
+                    <div className="text-[64px] font-bold text-gray-200 leading-none tracking-tight tabular-nums">42</div>
+                    <div className="mt-3 space-y-1">
+                      {["Missing 6 tags", "Title too generic", "No buyer keywords"].map(item => (
+                        <div key={item} className="flex items-center justify-center gap-1.5 text-[11px] text-gray-400">
+                          <span className="w-1.5 h-1.5 rounded-full bg-gray-200 shrink-0" />{item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="px-5 py-7 text-center bg-brand-light/30">
+                    <p className="text-[10px] font-bold text-brand-muted uppercase tracking-widest mb-2">After</p>
+                    <div className="text-[64px] font-bold text-brand leading-none tracking-tight tabular-nums">89</div>
+                    <div className="mt-3 space-y-1">
+                      {["All 13 tags filled", "Title rewritten", "Keywords added"].map(item => (
+                        <div key={item} className="flex items-center justify-center gap-1.5 text-[11px] text-brand-muted">
+                          <CheckCircle2 className="w-3 h-3 text-brand shrink-0" />{item}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right float: keyword + social */}
-            <div className="hidden lg:flex flex-col gap-3 w-52 mt-8 shrink-0">
+            {/* ── Right float column ── */}
+            <div className="hidden lg:flex flex-col gap-4 w-56 xl:w-60 shrink-0">
 
-              {/* Keyword suggestion card */}
+              {/* Keyword card */}
               <div className="bg-white border border-warm-border rounded-2xl shadow-md p-4">
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Top keywords</p>
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   {[
                     { kw: "gift for her",   vol: "High" },
                     { kw: "birthday gift",  vol: "High" },
-                    { kw: "custom mug",     vol: "Med" },
+                    { kw: "custom mug",     vol: "Med"  },
                   ].map(({ kw, vol }) => (
-                    <div key={kw} className="flex items-center justify-between text-[11px]">
+                    <div key={kw} className="flex items-center justify-between text-[12px]">
                       <span className="text-gray-700 font-medium">{kw}</span>
-                      <span className={`px-1.5 py-0.5 rounded font-semibold ${vol === "High" ? "bg-green-50 text-green-700" : "bg-gray-100 text-gray-500"}`}>{vol}</span>
+                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-semibold ${vol === "High" ? "bg-green-50 text-green-700" : "bg-gray-100 text-gray-500"}`}>{vol}</span>
                     </div>
                   ))}
                 </div>
@@ -203,13 +199,13 @@ export default function LoginPage() {
 
               {/* Social proof */}
               <div className="bg-white border border-warm-border rounded-2xl shadow-md p-4">
-                <div className="flex -space-x-2 mb-2.5">
+                <div className="flex -space-x-2 mb-3">
                   {["SK", "MT", "PR", "JL", "AK"].map((init, i) => (
                     <div key={i} className="w-7 h-7 rounded-full bg-brand-light border-2 border-white text-brand-muted text-[9px] font-bold flex items-center justify-center">{init}</div>
                   ))}
                 </div>
-                <p className="text-[12px] text-gray-600 font-medium leading-snug">
-                  <span className="font-bold text-gray-900">4,000+ sellers</span> already improving their listings
+                <p className="text-[12px] text-gray-600 leading-snug">
+                  <span className="font-bold text-gray-900">4,000+ sellers</span><br />improving their listings
                 </p>
               </div>
             </div>
