@@ -356,58 +356,80 @@ export default function LoginPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-            <div className="space-y-6">
+            {/* Left */}
+            <div className="space-y-8">
               <div>
                 <p className="text-xs font-semibold text-brand uppercase tracking-widest mb-4">Why Listifly</p>
                 <h2 className="text-4xl font-bold text-gray-900 leading-tight mb-5">
-                  Built for Etsy's search — not search in general.
+                  Other tools are built for Google.<br />Etsy is different.
                 </h2>
-                <p className="text-gray-600 leading-relaxed text-[16px] mb-4">
-                  Etsy has its own algorithm, tag system, and buyer behavior patterns. Generic SEO tools
-                  ignore all of that — they give advice optimized for Google, not for Etsy sellers.
-                </p>
-                <p className="text-gray-600 leading-relaxed text-[16px]">
-                  Listifly was built specifically around Etsy&apos;s ranking signals. It identifies
-                  problems, rewrites the listing, and lets you push it live — without leaving the app.
+                <p className="text-gray-500 text-[16px] leading-relaxed">
+                  Generic SEO tools give you Google advice. Etsy has its own algorithm, its own tag system, its own buyer patterns. That advice makes things worse — not better.
                 </p>
               </div>
 
-              <div className="space-y-3 pt-2">
+              <div className="space-y-3">
                 {[
-                  "Scoring based on Etsy-specific ranking patterns",
-                  "Rewrites listings — doesn't just flag problems",
-                  "You review every change before anything goes live",
-                  "No SEO knowledge required",
+                  "Scores your listing against Etsy's actual ranking signals",
+                  "Rewrites your title, tags, and description — you just approve",
+                  "Pushes directly to Etsy in one click — no copy-pasting",
+                  "Works even if you've never heard of SEO",
                 ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
-                    <span className="text-[15px] text-gray-700 font-medium">{item}</span>
+                  <div key={item} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-4 h-4 text-brand shrink-0 mt-0.5" />
+                    <span className="text-[15px] text-gray-700">{item}</span>
                   </div>
                 ))}
               </div>
+
+              {/* Proof stat */}
+              <div className="flex items-center gap-5 border border-warm-border bg-white rounded-2xl px-6 py-5">
+                <div className="text-[2.4rem] font-bold text-brand leading-none tracking-tight">+68%</div>
+                <div>
+                  <p className="font-semibold text-gray-900 text-[14px]">more views on average</p>
+                  <p className="text-gray-500 text-[13px]">after optimizing with Listifly · first month</p>
+                </div>
+              </div>
             </div>
 
-            <div className="bg-white border border-warm-border rounded-2xl overflow-hidden shadow-sm">
-              <div className="grid grid-cols-3 text-[11px] font-bold text-gray-400 uppercase tracking-widest px-5 py-4 border-b border-warm-border bg-surface">
+            {/* Right: comparison table with emotional contrast */}
+            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden">
+              <div className="grid grid-cols-3 text-[11px] font-bold text-gray-400 uppercase tracking-widest px-5 py-4 border-b border-gray-100 bg-surface">
                 <span className="col-span-1" />
                 <span className="text-center">Other tools</span>
                 <span className="text-center text-brand">Listifly</span>
               </div>
               {[
-                "Etsy-specific scoring",
-                "Rewrites listings for you",
-                "Pushes directly to Etsy",
-                "Plain-English explanations",
-                "No SEO knowledge needed",
-              ].map((label) => (
-                <div key={label} className="grid grid-cols-3 items-center px-5 py-3.5 border-b border-gray-50 last:border-0">
-                  <span className="text-[13px] text-gray-700 font-medium col-span-1 leading-snug">{label}</span>
-                  <span className="flex justify-center">
-                    <span className="text-gray-200 font-light text-lg">—</span>
-                  </span>
-                  <span className="flex justify-center">
-                    <CheckCircle2 className="w-4 h-4 text-brand" />
-                  </span>
+                {
+                  label: "Built for",
+                  them: "Google SEO",
+                  us: "Etsy's algorithm",
+                },
+                {
+                  label: "How they help",
+                  them: "Flag what's wrong",
+                  us: "Rewrite it for you",
+                },
+                {
+                  label: "Knowledge needed",
+                  them: "SEO expertise",
+                  us: "None",
+                },
+                {
+                  label: "End result",
+                  them: "A list of tasks",
+                  us: "A fixed listing",
+                },
+                {
+                  label: "Push to Etsy",
+                  them: "Manual copy-paste",
+                  us: "One click",
+                },
+              ].map((row) => (
+                <div key={row.label} className="grid grid-cols-3 items-center px-5 py-3.5 border-b border-gray-50 last:border-0">
+                  <span className="text-[12px] text-gray-500 font-medium">{row.label}</span>
+                  <span className="flex justify-center text-[12px] text-gray-400 text-center px-2">{row.them}</span>
+                  <span className="flex justify-center text-[12px] text-brand font-semibold text-center px-2">{row.us}</span>
                 </div>
               ))}
             </div>
