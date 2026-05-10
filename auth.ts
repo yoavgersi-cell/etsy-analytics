@@ -85,9 +85,12 @@ const nextAuth = NextAuth({
       const isLoggedIn = !!session?.user
       const { pathname } = nextUrl
       if (pathname.startsWith("/api/auth") || pathname === "/api/paypal/setup") return true
-      if (pathname === "/" || pathname === "/login") {
+      if (pathname === "/") {
+        return Response.redirect(new URL(isLoggedIn ? "/dashboard" : "/login", nextUrl))
+      }
+      if (pathname === "/login") {
         if (isLoggedIn) return Response.redirect(new URL("/dashboard", nextUrl))
-        return Response.redirect(new URL("/login", nextUrl))
+        return true
       }
       return isLoggedIn
     },
