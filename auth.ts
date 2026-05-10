@@ -83,13 +83,11 @@ const nextAuth = NextAuth({
   callbacks: {
     authorized({ auth: session, request: { nextUrl } }) {
       const isLoggedIn = !!session?.user
-      const isLoginPage = nextUrl.pathname === "/login"
-      const isApiAuth = nextUrl.pathname.startsWith("/api/auth")
-      const isPayPalSetup = nextUrl.pathname === "/api/paypal/setup"
-      if (isApiAuth || isPayPalSetup) return true
-      if (isLoginPage) {
+      const { pathname } = nextUrl
+      if (pathname.startsWith("/api/auth") || pathname === "/api/paypal/setup") return true
+      if (pathname === "/" || pathname === "/login") {
         if (isLoggedIn) return Response.redirect(new URL("/dashboard", nextUrl))
-        return true
+        return Response.redirect(new URL("/login", nextUrl))
       }
       return isLoggedIn
     },
