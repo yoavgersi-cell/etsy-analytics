@@ -176,51 +176,76 @@ export default function LoginPage() {
       {/* ── PROBLEM ── */}
       <section id="features" className="bg-surface border-y border-warm-border py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="max-w-2xl mb-14">
+
+          <div className="max-w-xl mb-14">
             <p className="text-xs font-semibold text-brand uppercase tracking-widest mb-4">What goes wrong</p>
             <h2 className="text-4xl font-bold text-gray-900 leading-tight mb-4">
-              Small issues in your listings
-              add up to real lost sales.
+              Buyers can&apos;t find you.<br />Here&apos;s why.
             </h2>
             <p className="text-gray-600 leading-relaxed text-[16px]">
-              Etsy&apos;s search ranks listings based on specific signals — and most sellers miss
-              several of them without knowing it. The result is fewer views and lower sales.
+              Most Etsy listings have the same fixable problems. They don&apos;t show up in search — not because the product is wrong, but because the listing is.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              {
-                icon: Search,
-                title: "Titles that don't match how buyers search",
-                desc: "Buyers search by occasion, style, or use case — not your product name. A few wrong words and your listing disappears from results.",
-              },
-              {
-                icon: Tag,
-                title: "Tags that leave visibility on the table",
-                desc: "Etsy gives you 13 tags. Most sellers use 7–8, and many are too broad to rank for anything. Each empty tag slot is a missed search opportunity.",
-              },
-              {
-                icon: BarChart3,
-                title: "Descriptions that don't help Etsy rank you",
-                desc: "A good description converts. An optimized one also helps Etsy understand what your item is and who it's for — so it shows up in the right searches.",
-              },
-              {
-                icon: AlertCircle,
-                title: "Listings reaching the wrong audience",
-                desc: "Missing attributes or miscategorization can cause Etsy to show your listings to people unlikely to buy — which quietly lowers your ranking over time.",
-              },
-            ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="flex items-start gap-4 bg-white border border-warm-border rounded-2xl px-6 py-5 shadow-sm">
-                <div className="w-9 h-9 rounded-xl bg-brand-light border border-brand/15 flex items-center justify-center shrink-0 mt-0.5">
-                  <Icon className="w-4 h-4 text-brand" />
+          {/* Top row: 2 dominant cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+
+            {/* Card 1 — Title problem with before/after */}
+            <div className="bg-white border border-gray-200 rounded-2xl p-7">
+              <p className="font-bold text-gray-900 text-[16px] mb-2 leading-snug">
+                Your title describes the product.<br />Buyers don&apos;t search that way.
+              </p>
+              <p className="text-gray-500 text-[14px] leading-relaxed mb-6">
+                Buyers search by occasion, feeling, or use — not by what the item is. If your title says what it is instead of what it&apos;s for, you&apos;re invisible.
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <span className="text-[12px] font-semibold text-red-400 w-14 shrink-0">✕ Before</span>
+                  <span className="bg-red-50 border border-red-100 text-red-600 px-3 py-1.5 rounded-lg font-mono text-[12px]">Ceramic mug handmade</span>
                 </div>
-                <div>
-                  <p className="font-semibold text-gray-900 text-[14px] mb-1.5 leading-snug">{title}</p>
-                  <p className="text-gray-600 text-[13px] leading-relaxed">{desc}</p>
+                <div className="flex items-center gap-3">
+                  <span className="text-[12px] font-semibold text-brand w-14 shrink-0">✓ After</span>
+                  <span className="bg-brand-light border border-brand/20 text-brand-muted px-3 py-1.5 rounded-lg font-mono text-[12px]">Gift for coffee lover birthday</span>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Card 2 — Tags with visual proof */}
+            <div className="bg-white border border-gray-200 rounded-2xl p-7">
+              <p className="font-bold text-gray-900 text-[16px] mb-2 leading-snug">
+                You have 13 tag slots.<br />Most sellers waste 5 or 6 of them.
+              </p>
+              <p className="text-gray-500 text-[14px] leading-relaxed mb-6">
+                Every empty slot is a search you can&apos;t rank for. And the tags you do use are often too broad — &quot;handmade&quot; and &quot;gift&quot; don&apos;t match how buyers actually search.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {["personalized gift", "wedding favor", "custom mug", "coffee lover"].map((tag) => (
+                  <span key={tag} className="text-[11px] bg-brand-light border border-brand/20 text-brand-muted px-2.5 py-1 rounded-full font-medium">{tag}</span>
+                ))}
+                {["handmade", "gift", "mug"].map((tag) => (
+                  <span key={tag} className="text-[11px] bg-gray-100 border border-gray-200 text-gray-400 px-2.5 py-1 rounded-full">{tag}</span>
+                ))}
+                {[...Array(6)].map((_, i) => (
+                  <span key={i} className="text-[11px] bg-gray-50 border border-dashed border-gray-200 text-gray-300 px-2.5 py-1 rounded-full">empty</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom row: 2 secondary cards — less emphasis */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="bg-white border border-gray-200 rounded-2xl px-6 py-5">
+              <p className="font-semibold text-gray-800 text-[14px] mb-1.5 leading-snug">Your description doesn&apos;t help Etsy rank you</p>
+              <p className="text-gray-500 text-[13px] leading-relaxed">
+                Etsy reads your description to understand what the listing is for. Vague copy means Etsy guesses — and it usually guesses wrong.
+              </p>
+            </div>
+            <div className="bg-white border border-gray-200 rounded-2xl px-6 py-5">
+              <p className="font-semibold text-gray-800 text-[14px] mb-1.5 leading-snug">Your listing shows up for the wrong searches</p>
+              <p className="text-gray-500 text-[13px] leading-relaxed">
+                When buyers who aren&apos;t a match see your listing and don&apos;t click, your ranking quietly drops. Bad impressions compound over time.
+              </p>
+            </div>
           </div>
         </div>
       </section>
