@@ -88,7 +88,7 @@ ${suggestionText}
 Rules:
 - Title: max 140 chars, front-load the best keywords
 - Description: keep the same product info but improve structure, keywords, and clarity
-- Tags: exactly 13 tags, each max 20 chars, use high-search-volume Etsy keywords
+- Tags: exactly 13 tags, STRICT max 20 characters each (Etsy will reject longer ones), use high-search-volume Etsy keywords
 - Do NOT change the product name, price, or factual details`,
       },
     ],

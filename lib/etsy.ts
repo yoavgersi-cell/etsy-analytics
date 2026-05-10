@@ -61,10 +61,10 @@ export async function updateEtsyListing(
   const url = `${ETSY_API_BASE}/application/shops/${shopId}/listings/${etsyListingId}`
 
   const form = new URLSearchParams()
-  if (data.title) form.append("title", data.title)
+  if (data.title) form.append("title", data.title.slice(0, 140))
   if (data.description) form.append("description", data.description)
   if (data.tags) {
-    for (const tag of data.tags) form.append("tags", tag)
+    for (const tag of data.tags) form.append("tags", tag.slice(0, 20))
   }
 
   const res = await fetch(url, {
