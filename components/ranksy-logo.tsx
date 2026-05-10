@@ -1,3 +1,13 @@
+/**
+ * Listifly wordmark icon — "List + Fly"
+ *
+ * Concept: Three horizontal bars (the listing / list) on the left,
+ * a clean upward arrow on the right (the "fly" / growth).
+ * Reads as: your listing is rising.
+ *
+ * Brand color: deep nordic blue #1a3878 (matches --color-brand)
+ * Works on white, surface, and dark backgrounds.
+ */
 export function ListiflyLogo({ size = 32 }: { size?: number }) {
   return (
     <svg
@@ -6,35 +16,27 @@ export function ListiflyLogo({ size = 32 }: { size?: number }) {
       viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-label="Listifly"
     >
-      {/* Left ear outer */}
-      <polygon points="3,18 11,2 20,15" fill="#C8591A" />
-      {/* Right ear outer */}
-      <polygon points="37,18 29,2 20,15" fill="#C8591A" />
-      {/* Left ear inner */}
-      <polygon points="7,16 12,6 19,14" fill="#ffedd5" />
-      {/* Right ear inner */}
-      <polygon points="33,16 28,6 21,14" fill="#ffedd5" />
-      {/* Head */}
-      <circle cx="20" cy="24" r="14" fill="#C8591A" />
-      {/* Muzzle */}
-      <ellipse cx="20" cy="28.5" rx="8" ry="6" fill="#ffedd5" />
-      {/* Left eye white */}
-      <circle cx="15" cy="22" r="3" fill="white" />
-      {/* Right eye white */}
-      <circle cx="25" cy="22" r="3" fill="white" />
-      {/* Left pupil */}
-      <circle cx="15.5" cy="22.5" r="1.8" fill="#1c1917" />
-      {/* Right pupil */}
-      <circle cx="25.5" cy="22.5" r="1.8" fill="#1c1917" />
-      {/* Left eye shine */}
-      <circle cx="16.2" cy="21.5" r="0.6" fill="white" />
-      {/* Right eye shine */}
-      <circle cx="26.2" cy="21.5" r="0.6" fill="white" />
-      {/* Nose */}
-      <ellipse cx="20" cy="27" rx="2" ry="1.4" fill="#9a3412" />
-      {/* Mouth left */}
-      <path d="M18 28.5 Q20 30.5 22 28.5" stroke="#9a3412" strokeWidth="1" fill="none" strokeLinecap="round" />
+      {/* Bar 1 — full width (title line) */}
+      <rect x="4" y="10" width="19" height="4" rx="2" fill="#1a3878" />
+
+      {/* Bar 2 — medium (tags/description line) */}
+      <rect x="4" y="18" width="14" height="4" rx="2" fill="#1a3878" opacity="0.55" />
+
+      {/* Bar 3 — short (third line) */}
+      <rect x="4" y="26" width="9" height="4" rx="2" fill="#1a3878" opacity="0.28" />
+
+      {/* Upward arrow — the "fly" */}
+      <line x1="30" y1="31" x2="30" y2="12" stroke="#1a3878" strokeWidth="3.2" strokeLinecap="round" />
+      <polyline
+        points="25,17 30,12 35,17"
+        stroke="#1a3878"
+        strokeWidth="3.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
     </svg>
   )
 }
