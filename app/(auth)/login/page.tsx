@@ -132,16 +132,16 @@ export default function LoginPage() {
             {/* ── Center: headline + CTA + preview card ── */}
             <div className="flex-1 flex flex-col items-center text-center min-w-0">
               <h1 className="text-[2.6rem] sm:text-[3.4rem] xl:text-[3.8rem] font-bold text-gray-900 leading-[1.07] tracking-tight mb-5">
-                Your listings are losing sales
+                You&apos;re losing sales on Etsy.
                 <br className="hidden sm:block" />
-                <span className="text-brand"> to fixable problems.</span>
+                <span className="text-brand">We show you why — and fix it.</span>
               </h1>
               <p className="text-[17px] text-gray-500 max-w-[420px] mx-auto mb-8 leading-relaxed">
-                Listifly scores every listing, shows exactly what&apos;s wrong, and rewrites it — ready to push live in one click.
+                Scan your listings, see what&apos;s hurting your rankings, and apply fixes in minutes — no SEO knowledge needed.
               </p>
               <div className="flex flex-col items-center gap-3 mb-10">
-                <CTA label="Find my listing problems free →" />
-                <p className="text-sm text-gray-400">First 3 free · No credit card · You approve every change</p>
+                <CTA label="Fix my listings →" />
+                <p className="text-sm text-gray-400">Free for your first 3 listings · Takes under 60 seconds · Nothing changes without your approval</p>
               </div>
 
               {/* Before/after preview card — below CTA */}
