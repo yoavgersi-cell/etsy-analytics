@@ -26,7 +26,7 @@ function EtsyProvider(options: OAuthUserConfig<EtsyProfile>): OAuthConfig<EtsyPr
         const res = await fetch("https://openapi.etsy.com/v3/application/users/me", {
           headers: {
             Authorization: `Bearer ${tokens.access_token}`,
-            "x-api-key": `${process.env.ETSY_CLIENT_ID}:${process.env.ETSY_CLIENT_SECRET}`,
+            "x-api-key": process.env.ETSY_CLIENT_ID!,
           },
         })
         return res.json()
